@@ -42,3 +42,14 @@ const requireCustomerAuth = t.middleware(async (opts) => {
 });
 
 export const customerQuery = t.procedure.use(requireCustomerAuth);
+
+// ── Admin Auth (password-based, `users` table role=admin) ──
+const requireAdminAuth = t.middleware(async (opts) => {
+  const { ctx, next } = opts;
+  if (!ctx.admin) {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Admin login required" });
+  }
+  return next({ ctx: { ...ctx, admin: ctx.admin } });
+});
+
+export const adminProcedure = t.procedure.use(requireAdminAuth);

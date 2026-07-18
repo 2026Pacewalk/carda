@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router";
 import { useState } from "react";
+import { useAdminAuth } from "@/hooks/useAdminAuth";
 import {
   LayoutDashboard, Users, CreditCard, Palette, ShoppingBag,
   HelpCircle, Settings, LogOut, Menu, X, ChevronRight, Shield,
-  Ticket, IndianRupee
+  Ticket, IndianRupee, Home as HomeIcon
 } from "lucide-react";
 
 const navItems = [
@@ -19,6 +20,7 @@ const navItems = [
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { admin, logout } = useAdminAuth();
 
   return (
     <div className="min-h-screen bg-[#f8f7f7] flex">
@@ -49,10 +51,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           })}
         </nav>
 
-        <div className="p-4 border-t border-white/10">
-          <Link to="/" className="flex items-center gap-2 text-white/40 hover:text-white text-[13px] transition-colors mb-2">
-            <LogOut size={14} /> Back to Website
+        <div className="p-4 border-t border-white/10 space-y-2">
+          {admin && (
+            <div className="px-3 py-2 rounded-xl bg-white/5">
+              <p className="text-white text-[13px] font-semibold truncate">{admin.name || "Admin"}</p>
+              <p className="text-white/40 text-[11px] truncate">{admin.email}</p>
+            </div>
+          )}
+          <Link to="/" className="flex items-center gap-2 text-white/40 hover:text-white text-[13px] transition-colors px-3 py-1.5">
+            <HomeIcon size={14} /> Back to Website
           </Link>
+          <button onClick={logout} className="w-full flex items-center gap-2 text-red-400/80 hover:text-red-400 text-[13px] transition-colors px-3 py-1.5">
+            <LogOut size={14} /> Sign Out
+          </button>
         </div>
       </aside>
 

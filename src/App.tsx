@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router';
 import { useAuth } from '@/hooks/useAuth';
+import { getAdminToken } from '@/hooks/useAdminAuth';
 import { Suspense, lazy } from 'react';
 
 // Layout
@@ -12,6 +13,7 @@ import AdminLayout from './components/AdminLayout';
 import NotFound from './pages/NotFound';
 import CustomerLogin from './pages/CustomerLogin';
 import CustomerRegister from './pages/CustomerRegister';
+import AdminLogin from './pages/AdminLogin';
 const Home = lazy(() => import('./pages/Home'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
 const Services = lazy(() => import('./pages/Services'));
@@ -70,6 +72,11 @@ function CustomerProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+function AdminProtectedRoute({ children }: { children: React.ReactNode }) {
+  if (!getAdminToken()) return <Navigate to="/admin/login" replace />;
+  return <>{children}</>;
+}
+
 function PublicPage({ children }: { children: React.ReactNode }) {
   return <Layout>{children}</Layout>;
 }
@@ -125,13 +132,15 @@ export default function App() {
       <Route path="/customer/support" element={<CustomerProtectedRoute><CustomerLayout>{pageWrap(CustomerSupport)}</CustomerLayout></CustomerProtectedRoute>} />
 
       {/* Admin Panel Routes */}
-      <Route path="/admin/dashboard" element={<AdminLayout>{pageWrap(AdminDashboard)}</AdminLayout>} />
-      <Route path="/admin/customers" element={<AdminLayout>{pageWrap(AdminCustomers)}</AdminLayout>} />
-      <Route path="/admin/pdf-cards" element={<AdminLayout>{pageWrap(AdminPdfCards)}</AdminLayout>} />
-      <Route path="/admin/templates" element={<AdminLayout>{pageWrap(AdminTemplates)}</AdminLayout>} />
-      <Route path="/admin/packages" element={<AdminLayout>{pageWrap(AdminPackages)}</AdminLayout>} />
-      <Route path="/admin/orders" element={<AdminLayout>{pageWrap(AdminOrders)}</AdminLayout>} />
-      <Route path="/admin/payments" element={<AdminLayout>{pageWrap(AdminPayments)}</AdminLayout>} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+      <Route path="/admin/dashboard" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminDashboard)}</AdminLayout></AdminProtectedRoute>} />
+      <Route path="/admin/customers" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminCustomers)}</AdminLayout></AdminProtectedRoute>} />
+      <Route path="/admin/pdf-cards" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminPdfCards)}</AdminLayout></AdminProtectedRoute>} />
+      <Route path="/admin/templates" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminTemplates)}</AdminLayout></AdminProtectedRoute>} />
+      <Route path="/admin/packages" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminPackages)}</AdminLayout></AdminProtectedRoute>} />
+      <Route path="/admin/orders" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminOrders)}</AdminLayout></AdminProtectedRoute>} />
+      <Route path="/admin/payments" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminPayments)}</AdminLayout></AdminProtectedRoute>} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

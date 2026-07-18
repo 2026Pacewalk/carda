@@ -5,6 +5,7 @@ import superjson from "superjson";
 import type { AppRouter } from "../../api/router";
 import type { ReactNode } from "react";
 import { getCustomerToken } from "@/hooks/useCustomerAuth";
+import { getAdminToken } from "@/hooks/useAdminAuth";
 
 export const trpc = createTRPCReact<AppRouter>();
 
@@ -15,8 +16,12 @@ const trpcClient = trpc.createClient({
       url: "/api/trpc",
       transformer: superjson,
       headers() {
-        const token = getCustomerToken();
-        return token ? { "x-customer-token": token } : {};
+        const headers: Record<string, string> = {};
+        const customerToken = getCustomerToken();
+        if (customerToken) headers["x-customer-token"] = customerToken;
+        const adminToken = getAdminToken();
+        if (adminToken) headers["x-admin-token"] = adminToken;
+        return headers;
       },
       fetch(input, init) {
         return globalThis.fetch(input, {

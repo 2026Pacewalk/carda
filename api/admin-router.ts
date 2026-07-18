@@ -1,34 +1,28 @@
 import { z } from "zod";
 import { eq, desc, count, like } from "drizzle-orm";
-import { createRouter, adminQuery, publicQuery } from "./middleware";
+import { createRouter, adminProcedure } from "./middleware";
 import { getDb } from "./queries/connection";
 import {
   customers, pdfCards, orders, packages, cardTemplates,
   supportTickets, payments
 } from "@db/schema";
-import { verifyCustomerToken } from "./customer-auth";
 import { TRPCError } from "@trpc/server";
 
-// Helper: get customer from token for admin fallback
-async function getAdminCustomer(ctx: { req: Request }) {
-  const token = ctx.req.headers.get("x-customer-token");
-  if (!token) return null;
-  const customer = await verifyCustomerToken(token);
-  return customer;
+// Access to every procedure in this router is already enforced by the
+// `adminProcedure` middleware (valid admin JWT + role=admin). These helpers
+// remain only so the existing per-procedure guard calls keep compiling; they
+// now authorize strictly on the verified admin in context.
+async function getAdminCustomer(_ctx: { req: Request }) {
+  return null;
 }
 
-// Check: allow OAuth admin OR any authenticated customer (simplified admin access)
-function checkAdmin(ctx: { user?: any; customer?: any }, customer: any) {
-  // OAuth admin (from middleware)
-  if (ctx.user) return true;
-  // Customer token (fallback - simplified, in production check against admin list)
-  if (customer) return true;
-  return false;
+function checkAdmin(ctx: { admin?: unknown }, _customer?: unknown) {
+  return !!ctx.admin;
 }
 
 export const adminRouter = createRouter({
   // ── Stats ──
-  getStats: publicQuery.query(async ({ ctx }) => {
+  getStats: adminProcedure.query(async ({ ctx }) => {
     // Allow both OAuth admin and authenticated customer
     const customer = await getAdminCustomer(ctx);
     if (!checkAdmin(ctx, customer)) {
@@ -52,7 +46,7 @@ export const adminRouter = createRouter({
   }),
 
   // ── Customers ──
-  listCustomers: publicQuery.query(async ({ ctx }) => {
+  listCustomers: adminProcedure.query(async ({ ctx }) => {
     const customer = await getAdminCustomer(ctx);
     if (!checkAdmin(ctx, customer)) {
       throw new TRPCError({ code: "FORBIDDEN" });
@@ -69,7 +63,7 @@ export const adminRouter = createRouter({
     }).from(customers).orderBy(desc(customers.createdAt));
   }),
 
-  updateCustomerStatus: publicQuery
+  updateCustomerStatus: adminProcedure
     .input(z.object({ id: z.number(), status: z.enum(["active", "inactive", "suspended"]) }))
     .mutation(async ({ ctx, input }) => {
       const customer = await getAdminCustomer(ctx);
@@ -80,7 +74,7 @@ export const adminRouter = createRouter({
     }),
 
   // ── All Cards ──
-  listAllCards: publicQuery.query(async ({ ctx }) => {
+  listAllCards: adminProcedure.query(async ({ ctx }) => {
     const customer = await getAdminCustomer(ctx);
     if (!checkAdmin(ctx, customer)) throw new TRPCError({ code: "FORBIDDEN" });
     const db = getDb();
@@ -88,14 +82,14 @@ export const adminRouter = createRouter({
   }),
 
   // ── All Orders ──
-  listAllOrders: publicQuery.query(async ({ ctx }) => {
+  listAllOrders: adminProcedure.query(async ({ ctx }) => {
     const customer = await getAdminCustomer(ctx);
     if (!checkAdmin(ctx, customer)) throw new TRPCError({ code: "FORBIDDEN" });
     const db = getDb();
     return db.select().from(orders).orderBy(desc(orders.createdAt));
   }),
 
-  updateOrderStatus: publicQuery
+  updateOrderStatus: adminProcedure
     .input(z.object({ id: z.number(), status: z.enum(["pending", "paid", "failed", "refunded"]) }))
     .mutation(async ({ ctx, input }) => {
       const customer = await getAdminCustomer(ctx);
@@ -106,14 +100,14 @@ export const adminRouter = createRouter({
     }),
 
   // ── All Tickets ──
-  listAllTickets: publicQuery.query(async ({ ctx }) => {
+  listAllTickets: adminProcedure.query(async ({ ctx }) => {
     const customer = await getAdminCustomer(ctx);
     if (!checkAdmin(ctx, customer)) throw new TRPCError({ code: "FORBIDDEN" });
     const db = getDb();
     return db.select().from(supportTickets).orderBy(desc(supportTickets.createdAt));
   }),
 
-  updateTicketStatus: publicQuery
+  updateTicketStatus: adminProcedure
     .input(z.object({
       id: z.number(),
       status: z.enum(["open", "in_progress", "resolved", "closed"]),
@@ -130,14 +124,14 @@ export const adminRouter = createRouter({
     }),
 
   // ── Payments ──
-  listAllPayments: publicQuery.query(async ({ ctx }) => {
+  listAllPayments: adminProcedure.query(async ({ ctx }) => {
     const customer = await getAdminCustomer(ctx);
     if (!checkAdmin(ctx, customer)) throw new TRPCError({ code: "FORBIDDEN" });
     const db = getDb();
     return db.select().from(payments).orderBy(desc(payments.createdAt));
   }),
 
-  updatePaymentStatus: publicQuery
+  updatePaymentStatus: adminProcedure
     .input(z.object({
       id: z.number(),
       status: z.enum(["pending", "approved", "rejected"]),
@@ -154,14 +148,14 @@ export const adminRouter = createRouter({
     }),
 
   // ── Templates CRUD ──
-  listTemplates: publicQuery.query(async ({ ctx }) => {
+  listTemplates: adminProcedure.query(async ({ ctx }) => {
     const customer = await getAdminCustomer(ctx);
     if (!checkAdmin(ctx, customer)) throw new TRPCError({ code: "FORBIDDEN" });
     const db = getDb();
     return db.select().from(cardTemplates).orderBy(desc(cardTemplates.createdAt));
   }),
 
-  createTemplate: publicQuery
+  createTemplate: adminProcedure
     .input(z.object({
       name: z.string().min(1),
       category: z.string().default("professional"),
@@ -178,7 +172,7 @@ export const adminRouter = createRouter({
       return { id: Number(tmpl.insertId) };
     }),
 
-  updateTemplate: publicQuery
+  updateTemplate: adminProcedure
     .input(z.object({
       id: z.number(),
       name: z.string().optional(),
@@ -198,7 +192,7 @@ export const adminRouter = createRouter({
       return { success: true };
     }),
 
-  deleteTemplate: publicQuery
+  deleteTemplate: adminProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ ctx, input }) => {
       const customer = await getAdminCustomer(ctx);
@@ -209,14 +203,14 @@ export const adminRouter = createRouter({
     }),
 
   // ── Packages CRUD ──
-  listPackages: publicQuery.query(async ({ ctx }) => {
+  listPackages: adminProcedure.query(async ({ ctx }) => {
     const customer = await getAdminCustomer(ctx);
     if (!checkAdmin(ctx, customer)) throw new TRPCError({ code: "FORBIDDEN" });
     const db = getDb();
     return db.select().from(packages).orderBy(desc(packages.createdAt));
   }),
 
-  createPackage: publicQuery
+  createPackage: adminProcedure
     .input(z.object({
       name: z.string().min(1),
       slug: z.string().min(1),
@@ -237,7 +231,7 @@ export const adminRouter = createRouter({
       return { id: Number(pkg.insertId) };
     }),
 
-  updatePackage: publicQuery
+  updatePackage: adminProcedure
     .input(z.object({
       id: z.number(),
       name: z.string().optional(),
