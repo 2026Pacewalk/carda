@@ -106,8 +106,8 @@ export default function SamplesPage() {
             {filtered.map((theme, i) => (
               <motion.div key={theme.id} initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.35, delay: i * 0.03 }}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img src={theme.img} alt={`PDF business card ${theme.name} - ${theme.category} design theme`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div className="aspect-[705/1280] overflow-hidden bg-[#f1f0f0]">
+                  <img src={theme.img} alt={`PDF business card ${theme.name} - ${theme.category} design theme`} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a2b4a]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
                   <div>
