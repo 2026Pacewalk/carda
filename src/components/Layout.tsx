@@ -8,14 +8,14 @@ import {
 } from "lucide-react";
 
 const navLinks = [
-  { label: "About", path: "/about-us.html", icon: Info, external: true },
+  { label: "About", path: "/about-us", icon: Info },
   { label: "Services", path: "/pdf-digital-business-card", icon: Briefcase },
   { label: "Pricing", path: "/pricing", icon: CreditCard },
   { label: "Samples", path: "/pdf-card-samples", icon: Image },
   { label: "Industries", path: "/industries", icon: Factory },
   { label: "Blog", path: "/blog", icon: BookOpen },
-  { label: "FAQ", path: "/faq.html", icon: HelpCircle, external: true },
-  { label: "Contact", path: "/contact-us.html", icon: Mail, external: true },
+  { label: "FAQ", path: "/faq", icon: HelpCircle },
+  { label: "Contact", path: "/contact-us", icon: Mail },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -35,21 +35,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) =>
-              link.external ? (
-                <a key={link.path} href={link.path}
-                  className="px-3 py-2 rounded-lg text-[13px] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all">
-                  {link.label}
-                </a>
-              ) : (
-                <Link key={link.path} to={link.path}
-                  className={`px-3 py-2 rounded-lg text-[13px] font-medium transition-all ${
-                    isActive(link.path) ? "text-[#ff8309] bg-white/5" : "text-white/70 hover:text-white hover:bg-white/5"
-                  }`}>
-                  {link.label}
-                </Link>
-              )
-            )}
+            {navLinks.map((link) => (
+              <Link key={link.path} to={link.path}
+                className={`px-3 py-2 rounded-lg text-[13px] font-medium transition-all ${
+                  isActive(link.path) ? "text-[#ff8309] bg-white/5" : "text-white/70 hover:text-white hover:bg-white/5"
+                }`}>
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           <div className="flex items-center gap-3">
@@ -81,21 +74,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 top-16 z-40 bg-[#0a2b4a] overflow-y-auto">
           <nav className="p-4 space-y-1">
-            {navLinks.map((link) =>
-              link.external ? (
-                <a key={link.path} href={link.path} onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-xl text-sm font-medium transition-all">
-                  <link.icon size={16} /> {link.label}
-                </a>
-              ) : (
-                <Link key={link.path} to={link.path} onClick={() => setMobileOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                    isActive(link.path) ? "text-[#ff8309] bg-white/5" : "text-white/70 hover:text-white hover:bg-white/5"
-                  }`}>
-                  <link.icon size={16} /> {link.label}
-                </Link>
-              )
-            )}
+            {navLinks.map((link) => (
+              <Link key={link.path} to={link.path} onClick={() => setMobileOpen(false)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                  isActive(link.path) ? "text-[#ff8309] bg-white/5" : "text-white/70 hover:text-white hover:bg-white/5"
+                }`}>
+                <link.icon size={16} /> {link.label}
+              </Link>
+            ))}
           </nav>
           <div className="p-4 border-t border-white/10 mt-4">
             {customer ? (
@@ -124,8 +110,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Pages</h4>
               <div className="space-y-1.5">
-                {["Home", "About", "Pricing", "Samples"].map((p) => (
-                  <Link key={p} to={p === "Home" ? "/" : `/${p.toLowerCase().replace(" ", "-")}`} className="block text-[11px] hover:text-[#ff8309] transition-colors">{p}</Link>
+                {[
+                  { label: "Home", path: "/" },
+                  { label: "About", path: "/about-us" },
+                  { label: "Pricing", path: "/pricing" },
+                  { label: "Samples", path: "/pdf-card-samples" },
+                ].map((p) => (
+                  <Link key={p.label} to={p.path} className="block text-[11px] hover:text-[#ff8309] transition-colors">{p.label}</Link>
                 ))}
               </div>
             </div>
