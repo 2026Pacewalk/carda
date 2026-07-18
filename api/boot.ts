@@ -5,13 +5,26 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { appRouter } from "./router";
 import { createContext } from "./context";
 import { env } from "./lib/env";
-import { createOAuthCallbackHandler } from "./kimi/auth";
-import { Paths } from "@contracts/constants";
+
+// Dev-server hardening: a single failed request (e.g. a malformed body reaching
+// the bodyLimit middleware) must not take down the whole dev server. Register
+// once, guarded against duplicate listeners on HMR reloads.
+if (!env.isProduction) {
+  const g = globalThis as unknown as { __mycardaDevGuards?: boolean };
+  if (!g.__mycardaDevGuards) {
+    g.__mycardaDevGuards = true;
+    process.on("unhandledRejection", (reason) => {
+      console.error("[dev] Unhandled rejection (ignored):", reason);
+    });
+    process.on("uncaughtException", (err) => {
+      console.error("[dev] Uncaught exception (ignored):", err);
+    });
+  }
+}
 
 const app = new Hono<{ Bindings: HttpBindings }>();
 
 app.use(bodyLimit({ maxSize: 50 * 1024 * 1024 }));
-app.get(Paths.oauthCallback, createOAuthCallbackHandler());
 app.use("/api/trpc/*", async (c) => {
   return fetchRequestHandler({
     endpoint: "/api/trpc",

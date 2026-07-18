@@ -67,7 +67,6 @@ export default function HomePage() {
     <div>
       {/* ===== HERO SECTION ===== */}
       <section className="relative bg-gradient-to-br from-[#0a2b4a] via-[#0a2b4a] to-[#103558] overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>

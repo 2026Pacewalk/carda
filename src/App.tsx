@@ -9,7 +9,6 @@ import CustomerLayout from './components/CustomerLayout';
 import AdminLayout from './components/AdminLayout';
 
 // Public pages
-import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import CustomerLogin from './pages/CustomerLogin';
 import CustomerRegister from './pages/CustomerRegister';
@@ -104,9 +103,8 @@ export default function App() {
       {/* Customer Auth Routes */}
       <Route path="/login" element={<CustomerLogin />} />
       <Route path="/register" element={<CustomerRegister />} />
-      <Route path="/admin/login" element={<Login />} />
 
-      {/* Old Dashboard Routes (OAuth) */}
+      {/* Old Dashboard Routes (non-functional until wired to new auth) */}
       <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout>{pageWrap(DashboardHome)}</DashboardLayout></ProtectedRoute>} />
       <Route path="/dashboard/cards" element={<ProtectedRoute><DashboardLayout>{pageWrap(CardList)}</DashboardLayout></ProtectedRoute>} />
       <Route path="/dashboard/cards/:id" element={<ProtectedRoute><DashboardLayout>{pageWrap(CardDetail)}</DashboardLayout></ProtectedRoute>} />

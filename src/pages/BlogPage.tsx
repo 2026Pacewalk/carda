@@ -91,7 +91,7 @@ export default function BlogPage() {
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 <Link to={`/blog/${featured.slug}`} className="group block bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all h-full">
                   <div className="aspect-[16/9] bg-gradient-to-br from-[#0a2b4a] to-[#103558] flex items-center justify-center relative overflow-hidden">
-                    <img src={featured.image} alt={featured.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <img src={featured.image} alt={featured.title} onError={(e) => { const t = e.currentTarget; t.onerror = null; t.src = '/images/digital.jpg'; }} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-[#ff8309] text-white rounded-full text-[10px] font-bold uppercase">Featured</span>
                     </div>
@@ -118,7 +118,7 @@ export default function BlogPage() {
                   <motion.div key={post.slug} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4, delay: i * 0.1 }}>
                     <Link to={`/blog/${post.slug}`} className="flex gap-3 group">
                       <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-[#0a2b4a] to-[#103558] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                        <img src={post.image} alt={post.title} className="w-full h-full object-cover opacity-70" loading="lazy" />
+                        <img src={post.image} alt={post.title} onError={(e) => { const t = e.currentTarget; t.onerror = null; t.src = '/images/digital.jpg'; }} className="w-full h-full object-cover opacity-70" loading="lazy" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <span className="text-[10px] text-[#ff8309] font-bold uppercase">{post.category}</span>
@@ -148,7 +148,7 @@ export default function BlogPage() {
                 <motion.div key={post.slug} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }}>
                   <Link to={`/blog/${post.slug}`} className="group block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all h-full flex flex-col">
                     <div className="aspect-[16/9] bg-gradient-to-br from-[#0a2b4a] to-[#103558] overflow-hidden relative">
-                      <img src={post.image} alt={post.title} className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                      <img src={post.image} alt={post.title} onError={(e) => { const t = e.currentTarget; t.onerror = null; t.src = '/images/digital.jpg'; }} className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                       <div className="absolute top-3 left-3">
                         <span className="px-2 py-0.5 bg-white/90 text-[#0a2b4a] rounded-full text-[9px] font-bold uppercase">{post.category}</span>
                       </div>

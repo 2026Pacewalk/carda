@@ -1,6 +1,5 @@
 import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import type { User, Customer } from "@db/schema";
-import { authenticateRequest } from "./kimi/auth";
 import { verifyCustomerToken } from "./customer-auth";
 
 export type TrpcContext = {
@@ -14,13 +13,6 @@ export async function createContext(
   opts: FetchCreateContextFnOptions,
 ): Promise<TrpcContext> {
   const ctx: TrpcContext = { req: opts.req, resHeaders: opts.resHeaders };
-
-  // Try OAuth authentication first
-  try {
-    ctx.user = await authenticateRequest(opts.req.headers);
-  } catch {
-    // OAuth auth failed, that's ok
-  }
 
   // Try customer JWT authentication
   try {
