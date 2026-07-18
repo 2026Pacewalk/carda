@@ -6,7 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, X, Phone, MessageCircle, LayoutDashboard, LogIn, UserPlus,
   Info, Briefcase, CreditCard, Image, Factory, BookOpen, HelpCircle, Mail,
-  ChevronRight, Zap, ArrowRight, PhoneCall
+  ChevronRight, Zap, ArrowRight, PhoneCall,
+  Facebook, Instagram, Linkedin, Youtube, MapPin, Star, Clock, Heart
 } from "lucide-react";
 
 const navLinks = [
@@ -18,6 +19,34 @@ const navLinks = [
   { label: "Blog", path: "/blog", icon: BookOpen },
   { label: "FAQ", path: "/faq", icon: HelpCircle },
   { label: "Contact", path: "/contact-us", icon: Mail },
+];
+
+const footerCols = [
+  { title: "Company", links: [
+    { label: "Home", path: "/" },
+    { label: "About Us", path: "/about-us" },
+    { label: "How It Works", path: "/how-it-works" },
+    { label: "Blog", path: "/blog" },
+  ] },
+  { title: "Product", links: [
+    { label: "Pricing", path: "/pricing" },
+    { label: "Samples", path: "/pdf-card-samples" },
+    { label: "Industries", path: "/industries" },
+    { label: "Services", path: "/pdf-digital-business-card" },
+  ] },
+  { title: "Legal", links: [
+    { label: "Privacy Policy", path: "/privacy-policy" },
+    { label: "Terms", path: "/terms" },
+    { label: "Refund Policy", path: "/refund-policy" },
+    { label: "FAQ", path: "/faq" },
+  ] },
+];
+
+const socials = [
+  { label: "Instagram", icon: Instagram, href: "#" },
+  { label: "Facebook", icon: Facebook, href: "#" },
+  { label: "LinkedIn", icon: Linkedin, href: "#" },
+  { label: "YouTube", icon: Youtube, href: "#" },
 ];
 
 const itemSpring = { type: "spring" as const, damping: 24, stiffness: 260 };
@@ -32,8 +61,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const { customer } = useCustomerAuth();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
+
+  // Scroll-aware header (glass + shadow, collapse utility bar)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Lock body scroll while the mobile drawer is open
   useEffect(() => {
@@ -46,46 +84,65 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f7f7]">
-      <header className="sticky top-0 z-50 bg-gradient-to-r from-[#0a2b4a] to-[#08223b] backdrop-blur-sm border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center">
-            <img src="/images/logo.png" alt="MyCarda" className="h-10 w-auto" />
-          </Link>
+      <header className="sticky top-0 z-50">
+        {/* Utility bar (collapses on scroll) */}
+        <div className={`hidden md:block bg-[#061a2e] border-b border-white/5 overflow-hidden transition-all duration-300 ${scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"}`}>
+          <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between text-[12px]">
+            <div className="flex items-center gap-5 text-white/55">
+              <a href="tel:+919517722444" className="flex items-center gap-1.5 hover:text-white transition-colors"><Phone size={12} className="text-[#ff8309]" /> +91 95177-22444</a>
+              <a href="mailto:mydigitalcarda@gmail.com" className="flex items-center gap-1.5 hover:text-white transition-colors"><Mail size={12} className="text-[#ff8309]" /> mydigitalcarda@gmail.com</a>
+            </div>
+            <div className="flex items-center gap-4 text-white/55">
+              <span className="flex items-center gap-1.5"><Clock size={12} className="text-[#ff8309]" /> Delivered in 24 hours</span>
+              <span className="flex items-center gap-1.5"><Star size={12} className="text-[#ff8309] fill-[#ff8309]" /> 4.9/5 Rated</span>
+            </div>
+          </div>
+        </div>
 
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link key={link.path} to={link.path}
-                className={`px-3 py-2 rounded-lg text-[13px] font-medium transition-all ${
-                  isActive(link.path) ? "text-[#ff8309] bg-white/5" : "text-white/70 hover:text-white hover:bg-white/5"
-                }`}>
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+        {/* Main bar */}
+        <div className={`border-b transition-all duration-300 ${scrolled ? "bg-[#0a2b4a]/85 backdrop-blur-md border-white/10 shadow-lg shadow-black/25" : "bg-gradient-to-r from-[#0a2b4a] to-[#08223b] border-white/5"}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <Link to="/" className="flex items-center shrink-0 active:scale-95 transition-transform">
+              <img src="/images/logo.png" alt="MyCarda" className="h-10 w-auto" />
+            </Link>
 
-          <div className="flex items-center gap-3">
-            {user ? (
-              <Link to="/dashboard" className="hidden sm:flex items-center gap-2 px-4 py-2 bg-[#ff8309] text-white rounded-full text-xs font-bold hover:bg-[#e57400] transition-all">
-                <LayoutDashboard size={14} /> Dashboard
-              </Link>
-            ) : customer ? (
-              <Link to="/customer/dashboard" className="hidden sm:flex items-center gap-2 px-4 py-2 bg-[#ff8309] text-white rounded-full text-xs font-bold hover:bg-[#e57400] transition-all">
-                <LayoutDashboard size={14} /> My Dashboard
-              </Link>
-            ) : (
-              <div className="hidden sm:flex items-center gap-2">
-                <Link to="/login" className="flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white rounded-full text-xs font-bold hover:bg-white/20 transition-all">
-                  <LogIn size={13} /> Sign In
+            <nav className="hidden lg:flex items-center gap-0.5">
+              {navLinks.map((link) => {
+                const active = isActive(link.path);
+                return (
+                  <Link key={link.path} to={link.path}
+                    className={`relative px-3.5 py-2 rounded-lg text-[13px] font-semibold transition-colors ${active ? "text-white" : "text-white/65 hover:text-white"}`}>
+                    {link.label}
+                    {active && (
+                      <motion.span layoutId="nav-underline"
+                        className="absolute inset-x-3 -bottom-[3px] h-[3px] rounded-full bg-gradient-to-r from-[#ff8309] to-[#ffb057]"
+                        transition={{ type: "spring", damping: 22, stiffness: 260 }} />
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div className="flex items-center gap-2.5">
+              {(user || customer) ? (
+                <Link to={customer ? "/customer/dashboard" : "/dashboard"} className="hidden sm:flex items-center gap-2 px-4 py-2 bg-[#ff8309] text-white rounded-full text-xs font-bold hover:bg-[#e57400] shadow-lg shadow-[#ff8309]/25 active:scale-95 transition-all">
+                  <LayoutDashboard size={14} /> Dashboard
                 </Link>
-                <Link to="/register" className="flex items-center gap-1.5 px-4 py-2 bg-[#ff8309] text-white rounded-full text-xs font-bold hover:bg-[#e57400] transition-all">
-                  <UserPlus size={13} /> Sign Up
-                </Link>
-              </div>
-            )}
-            <button onClick={() => setMobileOpen(true)} aria-label="Open menu"
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/80 hover:text-white hover:bg-white/10 active:scale-95 transition-all">
-              <Menu size={20} />
-            </button>
+              ) : (
+                <div className="hidden sm:flex items-center gap-1.5">
+                  <Link to="/login" className="px-4 py-2 text-white/80 rounded-full text-xs font-bold hover:text-white hover:bg-white/10 transition-all">
+                    Sign In
+                  </Link>
+                  <Link to="/register" className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#ff8309] to-[#e57400] text-white rounded-full text-xs font-bold shadow-lg shadow-[#ff8309]/30 hover:shadow-[#ff8309]/50 active:scale-95 transition-all">
+                    <UserPlus size={13} /> Sign Up
+                  </Link>
+                </div>
+              )}
+              <button onClick={() => setMobileOpen(true)} aria-label="Open menu"
+                className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/80 hover:text-white hover:bg-white/10 active:scale-95 transition-all">
+                <Menu size={20} />
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -186,53 +243,83 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <main className="flex-1">{children}</main>
 
-      <footer className="bg-[#0a2b4a] text-white/40 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-            <div>
-              <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Pages</h4>
-              <div className="space-y-1.5">
-                {[
-                  { label: "Home", path: "/" },
-                  { label: "About", path: "/about-us" },
-                  { label: "Pricing", path: "/pricing" },
-                  { label: "Samples", path: "/pdf-card-samples" },
-                ].map((p) => (
-                  <Link key={p.label} to={p.path} className="block text-[13px] hover:text-[#ff8309] transition-colors">{p.label}</Link>
-                ))}
+      <footer className="bg-gradient-to-b from-[#0a2b4a] to-[#061a2e] text-white/55">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-8">
+          {/* CTA banner */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#ff8309] to-[#e57400] px-6 py-8 md:px-10 md:py-9 mb-12 shadow-xl shadow-[#ff8309]/20">
+            <div className="absolute -right-8 -top-10 w-40 h-40 rounded-full bg-white/10" />
+            <div className="absolute -right-16 top-10 w-40 h-40 rounded-full bg-white/5" />
+            <div className="relative flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-left">
+              <div>
+                <h3 className="text-white text-xl md:text-2xl font-extrabold">Ready to get your PDF Business Card?</h3>
+                <p className="text-white/85 text-sm mt-1.5">One-time payment · No subscription · Delivered in 24 hours · Starting at Rs 99</p>
               </div>
-            </div>
-            <div>
-              <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Services</h4>
-              <div className="space-y-1.5">
-                {["PDF Card", "QR Code", "NFC Card", "Web Card"].map((s) => (
-                  <Link key={s} to="/pdf-digital-business-card" className="block text-[13px] hover:text-[#ff8309] transition-colors">{s}</Link>
-                ))}
+              <div className="flex gap-3 shrink-0">
+                <Link to="/pricing" className="px-5 py-3 bg-white text-[#0a2b4a] rounded-full text-sm font-bold hover:bg-white/90 active:scale-95 transition-all whitespace-nowrap">View Pricing</Link>
+                <a href="https://wa.me/919517722444" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 bg-[#0a2b4a] text-white rounded-full text-sm font-bold hover:bg-[#08223b] active:scale-95 transition-all whitespace-nowrap"><MessageCircle size={16} /> WhatsApp</a>
               </div>
-            </div>
-            <div>
-              <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Legal</h4>
-              <div className="space-y-1.5">
-                <Link to="/privacy-policy" className="block text-[13px] hover:text-[#ff8309] transition-colors">Privacy</Link>
-                <Link to="/terms" className="block text-[13px] hover:text-[#ff8309] transition-colors">Terms</Link>
-                <Link to="/refund-policy" className="block text-[13px] hover:text-[#ff8309] transition-colors">Refund</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Contact</h4>
-              <a href="tel:+919517722444" className="flex items-center gap-1.5 text-[13px] hover:text-[#ff8309] transition-colors mb-1"><Phone size={10} /> +91 95177-22444</a>
-              <a href="https://wa.me/919517722444" target="_blank" className="flex items-center gap-1.5 text-[13px] hover:text-green-400 transition-colors"><MessageCircle size={10} /> WhatsApp</a>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-4 text-center text-[12px]">
-            &copy; 2020-2026 MyCarda. All rights reserved.
+
+          {/* Columns */}
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-8 pb-10">
+            {/* Brand */}
+            <div className="col-span-2 md:col-span-4">
+              <img src="/images/logo.png" alt="MyCarda" className="h-11 w-auto mb-4" />
+              <p className="text-sm leading-relaxed max-w-xs text-white/50">
+                India's #1 provider of interactive PDF digital business cards — with click-to-call, WhatsApp, UPI QR &amp; social links, delivered in 24 hours.
+              </p>
+              <div className="flex items-center gap-2.5 mt-5">
+                {socials.map((s) => (
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                    className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-[#ff8309] hover:border-[#ff8309] active:scale-95 transition-all">
+                    <s.icon size={16} />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Link columns */}
+            {footerCols.map((col) => (
+              <div key={col.title} className="md:col-span-2">
+                <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4">{col.title}</h4>
+                <div className="space-y-2.5">
+                  {col.links.map((l) => (
+                    <Link key={l.label} to={l.path} className="group flex items-center gap-1.5 text-[13px] text-white/55 hover:text-[#ff8309] transition-colors">
+                      <ChevronRight size={13} className="text-white/20 group-hover:text-[#ff8309] group-hover:translate-x-0.5 transition-all" /> {l.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {/* Contact */}
+            <div className="col-span-2 md:col-span-2">
+              <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4">Get in touch</h4>
+              <div className="space-y-2.5 text-[13px]">
+                <a href="tel:+919517722444" className="flex items-center gap-2 text-white/55 hover:text-white transition-colors"><Phone size={14} className="text-[#ff8309] shrink-0" /> +91 95177-22444</a>
+                <a href="mailto:mydigitalcarda@gmail.com" className="flex items-center gap-2 text-white/55 hover:text-white transition-colors break-all"><Mail size={14} className="text-[#ff8309] shrink-0" /> mydigitalcarda@gmail.com</a>
+                <a href="https://wa.me/919517722444" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/55 hover:text-green-400 transition-colors"><MessageCircle size={14} className="text-green-400 shrink-0" /> Chat on WhatsApp</a>
+                <p className="flex items-center gap-2 text-white/55"><MapPin size={14} className="text-[#ff8309] shrink-0" /> Chandigarh, India</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-[12px] text-white/40">&copy; 2020–2026 MyCarda. All rights reserved.</p>
+            <p className="text-[12px] text-white/40 flex items-center gap-1.5">
+              Made with <Heart size={12} className="text-red-400 fill-red-400" /> in India
+            </p>
           </div>
         </div>
       </footer>
 
-      <a href="https://wa.me/919517722444" target="_blank" rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-        <MessageCircle size={28} className="text-white" />
+      {/* Floating WhatsApp */}
+      <a href="https://wa.me/919517722444" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"
+        className="group fixed bottom-5 right-5 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/40 hover:scale-110 transition-transform">
+        <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-40" />
+        <MessageCircle size={28} className="relative text-white" />
       </a>
     </div>
   );
