@@ -60,10 +60,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="w-8 h-8 rounded-full bg-[#ff8309] flex items-center justify-center text-white text-xs font-bold">{user?.name?.charAt(0) ?? "U"}</div>
             <div className="flex-1 min-w-0">
               <p className="text-white text-xs font-medium truncate">{user?.name ?? "User"}</p>
-              <p className="text-white/40 text-[10px] truncate">{user?.email ?? ""}</p>
+              <p className="text-white/40 text-[12px] truncate">{user?.email ?? ""}</p>
             </div>
           </div>
-          <button onClick={logout} className="flex items-center gap-2 text-white/40 hover:text-white text-[11px] transition-colors">
+          <button onClick={logout} className="flex items-center gap-2 text-white/40 hover:text-white text-[13px] transition-colors">
             <LogOut size={14} /> Sign Out
           </button>
         </div>
@@ -83,7 +83,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (
-              <Link key={item.path} to={item.path} className={`flex flex-col items-center gap-0.5 text-[10px] font-medium ${isActive ? "text-[#ff8309]" : "text-[#888]"}`}>
+              <Link key={item.path} to={item.path} className={`flex flex-col items-center gap-0.5 text-[12px] font-medium ${isActive ? "text-[#ff8309]" : "text-[#888]"}`}>
                 <Icon size={18} />
                 {item.label}
               </Link>

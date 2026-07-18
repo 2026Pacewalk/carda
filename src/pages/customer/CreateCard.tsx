@@ -60,7 +60,7 @@ export default function CustomerCreateCard() {
 
   const Field = ({ label, field, placeholder, type = "text", icon: Icon }: any) => (
     <div>
-      <label className="block text-[11px] font-bold text-[#0a2b4a] mb-1">{label}</label>
+      <label className="block text-[13px] font-bold text-[#0a2b4a] mb-1">{label}</label>
       <div className="relative">
         {Icon && <Icon size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#888]" />}
         <input type={type} value={form[field] || ""} onChange={(e) => update(field, e.target.value)}
@@ -80,7 +80,7 @@ export default function CustomerCreateCard() {
       {/* Steps */}
       <div className="flex items-center gap-1">
         {steps.map((s) => (
-          <button key={s.id} onClick={() => setStep(s.id)} className={`flex-1 flex items-center gap-1.5 px-2 py-2 rounded-lg text-[10px] font-bold transition-all ${step === s.id ? "bg-[#ff8309] text-white" : step > s.id ? "bg-green-100 text-green-700" : "bg-gray-100 text-[#888]"}`}>
+          <button key={s.id} onClick={() => setStep(s.id)} className={`flex-1 flex items-center gap-1.5 px-2 py-2 rounded-lg text-[12px] font-bold transition-all ${step === s.id ? "bg-[#ff8309] text-white" : step > s.id ? "bg-green-100 text-green-700" : "bg-gray-100 text-[#888]"}`}>
             <s.icon size={12} /> {s.label}
           </button>
         ))}
@@ -94,7 +94,7 @@ export default function CustomerCreateCard() {
             <Field label="Your Full Name *" field="ownerName" placeholder="John Doe" icon={User} />
             <Field label="Designation" field="designation" placeholder="CEO / Manager" icon={User} />
             <div>
-              <label className="block text-[11px] font-bold text-[#0a2b4a] mb-1">About Business</label>
+              <label className="block text-[13px] font-bold text-[#0a2b4a] mb-1">About Business</label>
               <textarea value={form.aboutBusiness} onChange={(e) => update("aboutBusiness", e.target.value)}
                 rows={3} placeholder="Brief description of your business"
                 className="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#ff8309] transition-all resize-none" />
@@ -132,7 +132,7 @@ export default function CustomerCreateCard() {
             <Field label="Logo URL" field="logoUrl" placeholder="https://example.com/logo.png" icon={Image} />
             <Field label="Profile Photo URL" field="profilePhotoUrl" placeholder="https://example.com/photo.jpg" icon={User} />
             <div>
-              <label className="block text-[11px] font-bold text-[#0a2b4a] mb-1">Services (comma separated)</label>
+              <label className="block text-[13px] font-bold text-[#0a2b4a] mb-1">Services (comma separated)</label>
               <textarea value={servicesText} onChange={(e) => setServicesText(e.target.value)}
                 rows={3} placeholder="Web Design, SEO, Marketing"
                 className="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#ff8309] transition-all resize-none" />
@@ -156,26 +156,26 @@ export default function CustomerCreateCard() {
                     </div>
                   )}
                   <h3 className="text-white font-bold text-sm">{form.businessName || "Business Name"}</h3>
-                  <p className="text-white/60 text-[10px]">{form.ownerName}</p>
-                  {form.designation && <p className="text-[#ff8309] text-[10px]">{form.designation}</p>}
+                  <p className="text-white/60 text-[12px]">{form.ownerName}</p>
+                  {form.designation && <p className="text-[#ff8309] text-[12px]">{form.designation}</p>}
                 </div>
                 <div className="p-3 space-y-1.5">
-                  {form.mobileNumber && <p className="text-[10px] text-[#555] flex items-center gap-1"><Phone size={9} className="text-[#ff8309]" /> {form.mobileNumber}</p>}
-                  {form.email && <p className="text-[10px] text-[#555] flex items-center gap-1"><Mail size={9} className="text-[#ff8309]" /> {form.email}</p>}
-                  {form.website && <p className="text-[10px] text-[#555] flex items-center gap-1"><Globe size={9} className="text-[#ff8309]" /> {form.website}</p>}
-                  {form.address && <p className="text-[10px] text-[#555] flex items-center gap-1"><MapPin size={9} className="text-[#ff8309]" /> {form.address}</p>}
-                  {form.upiId && <p className="text-[10px] text-[#555] flex items-center gap-1"><QrCode size={9} className="text-[#ff8309]" /> UPI: {form.upiId}</p>}
+                  {form.mobileNumber && <p className="text-[12px] text-[#555] flex items-center gap-1"><Phone size={9} className="text-[#ff8309]" /> {form.mobileNumber}</p>}
+                  {form.email && <p className="text-[12px] text-[#555] flex items-center gap-1"><Mail size={9} className="text-[#ff8309]" /> {form.email}</p>}
+                  {form.website && <p className="text-[12px] text-[#555] flex items-center gap-1"><Globe size={9} className="text-[#ff8309]" /> {form.website}</p>}
+                  {form.address && <p className="text-[12px] text-[#555] flex items-center gap-1"><MapPin size={9} className="text-[#ff8309]" /> {form.address}</p>}
+                  {form.upiId && <p className="text-[12px] text-[#555] flex items-center gap-1"><QrCode size={9} className="text-[#ff8309]" /> UPI: {form.upiId}</p>}
                   {form.whatsappNumber && (
                     <div className="grid grid-cols-2 gap-2 mt-2">
-                      <a href={`tel:${form.mobileNumber}`} className="bg-[#0a2b4a] text-white text-[9px] font-bold py-1.5 rounded-lg text-center flex items-center justify-center gap-1"><Phone size={8} /> CALL</a>
-                      <a href={`https://wa.me/${form.whatsappNumber.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white text-[9px] font-bold py-1.5 rounded-lg text-center flex items-center justify-center gap-1"><MessageCircle size={8} /> WHATSAPP</a>
+                      <a href={`tel:${form.mobileNumber}`} className="bg-[#0a2b4a] text-white text-[11px] font-bold py-1.5 rounded-lg text-center flex items-center justify-center gap-1"><Phone size={8} /> CALL</a>
+                      <a href={`https://wa.me/${form.whatsappNumber.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white text-[11px] font-bold py-1.5 rounded-lg text-center flex items-center justify-center gap-1"><MessageCircle size={8} /> WHATSAPP</a>
                     </div>
                   )}
                 </div>
               </div>
             </div>
 
-            <div className="bg-[#f8f7f7] rounded-xl p-3 text-[11px] text-[#555]">
+            <div className="bg-[#f8f7f7] rounded-xl p-3 text-[13px] text-[#555]">
               <p className="font-bold text-[#0a2b4a] mb-1">Card Summary:</p>
               {form.businessName && <p>Business: {form.businessName}</p>}
               {form.ownerName && <p>Owner: {form.ownerName}</p>}

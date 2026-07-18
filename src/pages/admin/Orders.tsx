@@ -32,12 +32,12 @@ export default function AdminOrders() {
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead><tr className="border-b border-gray-100 bg-[#f8f7f7]">
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">ID</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Customer</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Amount</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Status</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Date</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Action</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">ID</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Customer</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Amount</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Status</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Date</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Action</th>
               </tr></thead>
               <tbody>
                 {orders.map((o: any) => (
@@ -45,11 +45,11 @@ export default function AdminOrders() {
                     <td className="px-4 py-3 text-xs text-[#888]">#{o.id}</td>
                     <td className="px-4 py-3 text-xs font-medium text-[#0a2b4a]">#{o.customerId}</td>
                     <td className="px-4 py-3 text-xs text-[#555]">Rs {o.amount}</td>
-                    <td className="px-4 py-3"><span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${statusClass(o.status)}`}>{o.status}</span></td>
-                    <td className="px-4 py-3 text-[10px] text-[#888]">{new Date(o.createdAt).toLocaleDateString()}</td>
+                    <td className="px-4 py-3"><span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${statusClass(o.status)}`}>{o.status}</span></td>
+                    <td className="px-4 py-3 text-[12px] text-[#888]">{new Date(o.createdAt).toLocaleDateString()}</td>
                     <td className="px-4 py-3">
                       <select value={o.status} onChange={(e) => updateStatus.mutate({ id: o.id, status: e.target.value as any })}
-                        className="text-[10px] border border-gray-200 rounded-lg px-2 py-1 focus:outline-none focus:border-[#ff8309]">
+                        className="text-[12px] border border-gray-200 rounded-lg px-2 py-1 focus:outline-none focus:border-[#ff8309]">
                         <option value="pending">Pending</option>
                         <option value="paid">Paid</option>
                         <option value="failed">Failed</option>

@@ -25,13 +25,13 @@ export default function AdminCustomers() {
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b border-gray-100 bg-[#f8f7f7]">
-                  <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">ID</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Name</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Email</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Mobile</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Status</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Joined</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Actions</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">ID</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Name</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Email</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Mobile</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Status</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Joined</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -41,8 +41,8 @@ export default function AdminCustomers() {
                     <td className="px-4 py-3 text-xs font-bold text-[#0a2b4a]">{c.name}</td>
                     <td className="px-4 py-3 text-xs text-[#555]">{c.email}</td>
                     <td className="px-4 py-3 text-xs text-[#555]">{c.mobile}</td>
-                    <td className="px-4 py-3"><span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${c.status === "active" ? "bg-green-100 text-green-700" : c.status === "suspended" ? "bg-red-100 text-red-700" : "bg-gray-100 text-gray-600"}`}>{c.status}</span></td>
-                    <td className="px-4 py-3 text-[10px] text-[#888]">{new Date(c.createdAt).toLocaleDateString()}</td>
+                    <td className="px-4 py-3"><span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${c.status === "active" ? "bg-green-100 text-green-700" : c.status === "suspended" ? "bg-red-100 text-red-700" : "bg-gray-100 text-gray-600"}`}>{c.status}</span></td>
+                    <td className="px-4 py-3 text-[12px] text-[#888]">{new Date(c.createdAt).toLocaleDateString()}</td>
                     <td className="px-4 py-3">
                       <div className="flex gap-1">
                         <button onClick={() => updateStatus.mutate({ id: c.id, status: "active" })} className="p-1 bg-green-50 rounded hover:bg-green-100" title="Activate"><Shield size={12} className="text-green-600" /></button>

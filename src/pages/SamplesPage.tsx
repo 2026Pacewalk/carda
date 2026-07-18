@@ -78,7 +78,7 @@ export default function SamplesPage() {
                   <f.icon size={15} className="text-white" />
                 </div>
                 <h3 className="text-[#0a2b4a] font-bold text-xs mb-0.5">{f.title}</h3>
-                <p className="text-[#888] text-[10px]">{f.desc}</p>
+                <p className="text-[#888] text-[12px]">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -112,7 +112,7 @@ export default function SamplesPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a2b4a]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
                   <div>
                     <p className="text-white font-bold text-xs">{theme.name}</p>
-                    <p className="text-white/60 text-[10px]">{theme.category}</p>
+                    <p className="text-white/60 text-[12px]">{theme.category}</p>
                   </div>
                 </div>
               </motion.div>
@@ -138,7 +138,7 @@ export default function SamplesPage() {
                 </div>
                 <div>
                   <h3 className="text-[#0a2b4a] font-bold text-xs group-hover:text-[#ff8309] transition-colors">{ind.industry} Cards</h3>
-                  <p className="text-[#999] text-[10px]">{ind.desc}</p>
+                  <p className="text-[#999] text-[12px]">{ind.desc}</p>
                 </div>
               </motion.a>
             ))}

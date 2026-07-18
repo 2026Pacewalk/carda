@@ -29,12 +29,12 @@ export default function Support() {
       <div className="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
         <h2 className="text-sm font-bold text-[#0a2b4a] mb-4">Create Support Ticket</h2>
         <div className="mb-3">
-          <label className="text-[11px] font-bold text-[#0a2b4a] mb-1 block">Subject</label>
+          <label className="text-[13px] font-bold text-[#0a2b4a] mb-1 block">Subject</label>
           <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="What's the issue?"
             className="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#ff8309]" />
         </div>
         <div className="mb-3">
-          <label className="text-[11px] font-bold text-[#0a2b4a] mb-1 block">Message</label>
+          <label className="text-[13px] font-bold text-[#0a2b4a] mb-1 block">Message</label>
           <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Describe your issue in detail..."
             rows={4} className="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#ff8309] resize-none" />
         </div>
@@ -59,19 +59,19 @@ export default function Support() {
               <div key={t.id} className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
                 <div className="flex items-center gap-2 mb-1">
                   {statusIcon(t.status)}
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                  <span className={`text-[12px] font-bold px-2 py-0.5 rounded-full ${
                     t.status === "resolved" ? "bg-green-50 text-green-600" :
                     t.status === "in_progress" ? "bg-amber-50 text-amber-600" :
                     "bg-blue-50 text-blue-600"
                   }`}>{t.status.replace("_", " ")}</span>
-                  <span className="text-[10px] text-[#888] ml-auto">{new Date(t.createdAt).toLocaleDateString()}</span>
+                  <span className="text-[12px] text-[#888] ml-auto">{new Date(t.createdAt).toLocaleDateString()}</span>
                 </div>
                 <h3 className="text-xs font-bold text-[#0a2b4a] mb-0.5">{t.subject}</h3>
-                <p className="text-[#888] text-[11px]">{t.message}</p>
+                <p className="text-[#888] text-[13px]">{t.message}</p>
                 {t.adminReply && (
                   <div className="mt-2 p-2 bg-[#f8f7f7] rounded-lg">
-                    <p className="text-[10px] text-[#ff8309] font-bold mb-0.5">Reply from team:</p>
-                    <p className="text-[11px] text-[#555]">{t.adminReply}</p>
+                    <p className="text-[12px] text-[#ff8309] font-bold mb-0.5">Reply from team:</p>
+                    <p className="text-[13px] text-[#555]">{t.adminReply}</p>
                   </div>
                 )}
               </div>

@@ -56,7 +56,7 @@ export default function CardEdit() {
 
   const Input = ({ label, field, type = "text", placeholder, icon: Icon }: any) => (
     <div className="mb-3">
-      <label className="text-[11px] font-bold text-[#0a2b4a] mb-1 flex items-center gap-1">
+      <label className="text-[13px] font-bold text-[#0a2b4a] mb-1 flex items-center gap-1">
         {Icon && <Icon size={12} className="text-[#ff8309]" />} {label}
       </label>
       <input type={type} value={form[field] ?? ""} onChange={(e) => update(field, e.target.value)} placeholder={placeholder}
@@ -77,7 +77,7 @@ export default function CardEdit() {
         <Input label="Owner Name" field="ownerName" placeholder="Your name" icon={User} />
         <Input label="Designation" field="designation" placeholder="Your designation" icon={User} />
         <div className="mb-3">
-          <label className="text-[11px] font-bold text-[#0a2b4a] mb-1 block">About Business</label>
+          <label className="text-[13px] font-bold text-[#0a2b4a] mb-1 block">About Business</label>
           <textarea value={form.aboutBusiness ?? ""} onChange={(e) => update("aboutBusiness", e.target.value)} placeholder="About your business" rows={3}
             className="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#ff8309] resize-none" />
         </div>
@@ -104,7 +104,7 @@ export default function CardEdit() {
             {services.length > 1 && <button onClick={() => setServices(services.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 text-xs px-2">Remove</button>}
           </div>
         ))}
-        <button onClick={() => setServices([...services, ""])} className="text-[11px] text-[#ff8309] font-medium hover:underline">+ Add Service</button>
+        <button onClick={() => setServices([...services, ""])} className="text-[13px] text-[#ff8309] font-medium hover:underline">+ Add Service</button>
 
         <div className="pt-4">
           <button onClick={handleSave} disabled={updateCard.isPending}

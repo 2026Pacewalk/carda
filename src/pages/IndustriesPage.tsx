@@ -80,7 +80,7 @@ export default function IndustriesPage() {
                   <w.icon size={18} className="text-white" />
                 </div>
                 <h3 className="text-[#0a2b4a] font-bold text-xs mb-1">{w.title}</h3>
-                <p className="text-[#888] text-[11px] leading-relaxed">{w.desc}</p>
+                <p className="text-[#888] text-[13px] leading-relaxed">{w.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -105,7 +105,7 @@ export default function IndustriesPage() {
                 <p className="text-[#888] text-xs leading-relaxed mb-3">{ind.desc}</p>
                 <ul className="space-y-1">
                   {ind.benefits.map((b, j) => (
-                    <li key={j} className="flex items-center gap-1.5 text-[10px] text-[#555]">
+                    <li key={j} className="flex items-center gap-1.5 text-[12px] text-[#555]">
                       <Check size={10} className="text-green-500 flex-shrink-0" /> {b}
                     </li>
                   ))}

@@ -60,8 +60,8 @@ export default function AdminTemplates() {
                   <Palette size={24} className="text-white/50" />
                 </div>
                 <h4 className="text-sm font-bold text-[#0a2b4a]">{t.name}</h4>
-                <p className="text-[10px] text-[#888] capitalize">{t.category} • {t.isActive ? "Active" : "Inactive"}</p>
-                <button onClick={() => remove.mutate({ id: t.id })} className="mt-2 flex items-center gap-1 text-[10px] text-red-500 hover:text-red-700">
+                <p className="text-[12px] text-[#888] capitalize">{t.category} • {t.isActive ? "Active" : "Inactive"}</p>
+                <button onClick={() => remove.mutate({ id: t.id })} className="mt-2 flex items-center gap-1 text-[12px] text-red-500 hover:text-red-700">
                   <Trash2 size={10} /> Delete
                 </button>
               </div>

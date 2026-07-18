@@ -61,8 +61,8 @@ export default function CustomerProfile() {
           </div>
           <div>
             <h3 className="text-sm font-bold text-[#0a2b4a]">{customer?.name || "User"}</h3>
-            <p className="text-[10px] text-[#888]">{customer?.email}</p>
-            <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 bg-green-100 text-green-700 rounded-full text-[9px] font-bold">
+            <p className="text-[12px] text-[#888]">{customer?.email}</p>
+            <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 bg-green-100 text-green-700 rounded-full text-[11px] font-bold">
               <Shield size={8} /> {customer?.status || "active"}
             </span>
           </div>
@@ -70,7 +70,7 @@ export default function CustomerProfile() {
 
         <div className="space-y-3">
           <div>
-            <label className="block text-[11px] font-bold text-[#0a2b4a] mb-1">Name</label>
+            <label className="block text-[13px] font-bold text-[#0a2b4a] mb-1">Name</label>
             <div className="relative">
               <User size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#888]" />
               <input type="text" defaultValue={customer?.name || ""} onChange={(e) => setName(e.target.value)}
@@ -78,7 +78,7 @@ export default function CustomerProfile() {
             </div>
           </div>
           <div>
-            <label className="block text-[11px] font-bold text-[#0a2b4a] mb-1">Email</label>
+            <label className="block text-[13px] font-bold text-[#0a2b4a] mb-1">Email</label>
             <div className="relative">
               <Mail size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#888]" />
               <input type="email" value={customer?.email || ""} disabled
@@ -86,7 +86,7 @@ export default function CustomerProfile() {
             </div>
           </div>
           <div>
-            <label className="block text-[11px] font-bold text-[#0a2b4a] mb-1">Mobile</label>
+            <label className="block text-[13px] font-bold text-[#0a2b4a] mb-1">Mobile</label>
             <div className="relative">
               <Phone size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#888]" />
               <input type="tel" defaultValue={customer?.mobile || ""} onChange={(e) => setMobile(e.target.value)}

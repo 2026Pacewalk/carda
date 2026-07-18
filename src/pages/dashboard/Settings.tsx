@@ -26,7 +26,7 @@ export default function SettingsPage() {
           <div>
             <p className="text-[#0a2b4a] font-bold text-sm">{user?.name ?? "User"}</p>
             <p className="text-[#888] text-xs">{user?.email ?? ""}</p>
-            <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold mt-1 inline-block ${
+            <span className={`text-[12px] px-2 py-0.5 rounded-full font-bold mt-1 inline-block ${
               user?.role === "admin" ? "bg-purple-50 text-purple-600" : "bg-blue-50 text-blue-600"
             }`}>{user?.role ?? "user"}</span>
           </div>
@@ -46,9 +46,9 @@ export default function SettingsPage() {
                 <p className="text-xs font-bold text-[#0a2b4a]">{pkg.name}</p>
                 <p className="text-sm font-extrabold text-[#ff8309]">Rs {pkg.price}</p>
               </div>
-              <p className="text-[10px] text-[#888] mb-2">{pkg.description}</p>
+              <p className="text-[12px] text-[#888] mb-2">{pkg.description}</p>
               {pkg.features && (pkg.features as string[]).map((f: string, i: number) => (
-                <span key={i} className="inline-block text-[10px] bg-white px-2 py-0.5 rounded-full text-[#555] mr-1 mb-1">{f}</span>
+                <span key={i} className="inline-block text-[12px] bg-white px-2 py-0.5 rounded-full text-[#555] mr-1 mb-1">{f}</span>
               ))}
             </div>
           ))}

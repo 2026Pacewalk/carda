@@ -41,21 +41,21 @@ export default function CustomerMyCards() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-sm font-bold text-[#0a2b4a] truncate">{card.businessName || "Untitled"}</h3>
-                  <p className="text-[10px] text-[#888]">{card.ownerName}</p>
-                  <span className={`inline-block mt-1 px-2 py-0.5 rounded-full text-[9px] font-bold ${card.status === "published" ? "bg-green-100 text-green-700" : card.status === "draft" ? "bg-yellow-100 text-yellow-700" : "bg-gray-100 text-gray-600"}`}>
+                  <p className="text-[12px] text-[#888]">{card.ownerName}</p>
+                  <span className={`inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${card.status === "published" ? "bg-green-100 text-green-700" : card.status === "draft" ? "bg-yellow-100 text-yellow-700" : "bg-gray-100 text-gray-600"}`}>
                     {card.status}
                   </span>
                 </div>
               </div>
               <div className="flex gap-1.5">
-                <Link to={`/customer/my-cards/${card.id}`} className="flex-1 flex items-center justify-center gap-1 py-1.5 bg-[#f8f7f7] rounded-lg text-[10px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 transition-all">
+                <Link to={`/customer/my-cards/${card.id}`} className="flex-1 flex items-center justify-center gap-1 py-1.5 bg-[#f8f7f7] rounded-lg text-[12px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 transition-all">
                   <Eye size={10} /> View
                 </Link>
-                <Link to={`/customer/my-cards/${card.id}/edit`} className="flex-1 flex items-center justify-center gap-1 py-1.5 bg-[#f8f7f7] rounded-lg text-[10px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 transition-all">
+                <Link to={`/customer/my-cards/${card.id}/edit`} className="flex-1 flex items-center justify-center gap-1 py-1.5 bg-[#f8f7f7] rounded-lg text-[12px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 transition-all">
                   <Edit size={10} /> Edit
                 </Link>
                 {confirmDelete === card.id ? (
-                  <button onClick={() => deleteCard.mutate({ id: card.id })} className="flex-1 py-1.5 bg-red-500 text-white rounded-lg text-[10px] font-bold">
+                  <button onClick={() => deleteCard.mutate({ id: card.id })} className="flex-1 py-1.5 bg-red-500 text-white rounded-lg text-[12px] font-bold">
                     Confirm
                   </button>
                 ) : (

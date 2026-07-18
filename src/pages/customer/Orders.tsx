@@ -43,13 +43,13 @@ export default function CustomerOrders() {
               <div key={order.id} className="bg-white rounded-xl border border-gray-100 p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-bold text-[#0a2b4a]">Order #{order.id}</span>
-                  <span className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold ${getStatusClass(order.status)}`}>
+                  <span className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-bold ${getStatusClass(order.status)}`}>
                     {getStatusIcon(order.status)} {order.status}
                   </span>
                 </div>
                 <p className="text-sm text-[#555]">{pkg?.name || "Unknown Package"}</p>
                 <p className="text-xs text-[#888]">Amount: Rs {order.amount}</p>
-                <p className="text-[10px] text-[#aaa] mt-1">{new Date(order.createdAt).toLocaleDateString()}</p>
+                <p className="text-[12px] text-[#aaa] mt-1">{new Date(order.createdAt).toLocaleDateString()}</p>
               </div>
             );
           })}

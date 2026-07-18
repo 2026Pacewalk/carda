@@ -93,7 +93,7 @@ export default function CustomerCardEdit() {
           <Link to="/customer/my-cards" className="p-2 bg-white rounded-lg border border-gray-100 hover:bg-[#f8f7f7]"><ArrowLeft size={16} className="text-[#0a2b4a]" /></Link>
           <div>
             <h1 className="text-lg font-extrabold text-[#0a2b4a]">Edit Card</h1>
-            <p className="text-[10px] text-[#888]">{card.businessName}</p>
+            <p className="text-[12px] text-[#888]">{card.businessName}</p>
           </div>
         </div>
         <button onClick={handleSave} disabled={updateCard.isPending}
@@ -108,7 +108,7 @@ export default function CustomerCardEdit() {
           <div className="space-y-3">
             {section.fields.map((field) => (
               <div key={field.key}>
-                <label className="block text-[11px] font-bold text-[#0a2b4a] mb-1">{field.label} {field.required && "*"}</label>
+                <label className="block text-[13px] font-bold text-[#0a2b4a] mb-1">{field.label} {field.required && "*"}</label>
                 {field.textarea ? (
                   <textarea value={form[field.key] || ""} onChange={(e) => update(field.key, e.target.value)} rows={3}
                     className="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#ff8309] transition-all resize-none" />

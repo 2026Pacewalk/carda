@@ -59,9 +59,9 @@ export default function BlogPostPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <div className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 bg-[#ff8309] rounded-full text-white text-[11px] font-bold">{post.category}</span>
-              <span className="flex items-center gap-1 text-white/50 text-[11px]"><Clock size={12} /> {post.readTime}</span>
-              <span className="flex items-center gap-1 text-white/50 text-[11px]"><Calendar size={12} /> {post.date}</span>
+              <span className="px-3 py-1 bg-[#ff8309] rounded-full text-white text-[13px] font-bold">{post.category}</span>
+              <span className="flex items-center gap-1 text-white/50 text-[13px]"><Clock size={12} /> {post.readTime}</span>
+              <span className="flex items-center gap-1 text-white/50 text-[13px]"><Calendar size={12} /> {post.date}</span>
             </div>
             <h1 className="text-2xl md:text-3xl font-extrabold text-white mb-4">{post.title}</h1>
             <div className="flex items-center gap-3">
@@ -70,7 +70,7 @@ export default function BlogPostPage() {
               </div>
               <div>
                 <p className="text-sm font-bold text-white">{post.author}</p>
-                <p className="text-[11px] text-white/50">PDF Business Card Expert</p>
+                <p className="text-[13px] text-white/50">PDF Business Card Expert</p>
               </div>
               <div className="ml-auto flex gap-2">
                 <button onClick={handleCopy} className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 rounded-lg text-white text-xs hover:bg-white/20 transition-all">
@@ -117,7 +117,7 @@ export default function BlogPostPage() {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-[#0a2b4a]">{post.author}</p>
-                  <p className="text-[11px] text-[#888]">Expert in digital business cards and professional networking solutions for Indian businesses.</p>
+                  <p className="text-[13px] text-[#888]">Expert in digital business cards and professional networking solutions for Indian businesses.</p>
                 </div>
               </div>
 
@@ -160,7 +160,7 @@ export default function BlogPostPage() {
                         </div>
                         <div>
                           <h4 className="text-sm font-bold text-[#0a2b4a] group-hover:text-[#ff8309] transition-colors line-clamp-2">{rp.title}</h4>
-                          <span className="text-[10px] text-[#aaa]">{rp.readTime}</span>
+                          <span className="text-[12px] text-[#aaa]">{rp.readTime}</span>
                         </div>
                       </Link>
                     ))}
@@ -221,7 +221,7 @@ export default function BlogPostPage() {
               <Link to="/pricing" className="block bg-gradient-to-r from-[#0a2b4a] to-[#103558] rounded-xl p-4 text-center hover:shadow-lg transition-all group">
                 <p className="font-bold text-sm text-white mb-1">Get Your PDF Card</p>
                 <p className="text-xs text-white/60 mb-3">Starting at just Rs 99</p>
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[#ff8309] group-hover:gap-2 transition-all">View Pricing <ChevronRight size={10} /></span>
+                <span className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8309] group-hover:gap-2 transition-all">View Pricing <ChevronRight size={10} /></span>
               </Link>
 
               <a href="https://wa.me/919517722444" target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-4 text-center text-white hover:shadow-lg transition-all">

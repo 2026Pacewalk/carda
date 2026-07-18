@@ -32,13 +32,13 @@ export default function AdminPayments() {
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead><tr className="border-b border-gray-100 bg-[#f8f7f7]">
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">ID</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Customer</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Amount</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Method</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">UPI</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Status</th>
-                <th className="text-[10px] font-bold text-[#888] uppercase px-4 py-3">Action</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">ID</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Customer</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Amount</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Method</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">UPI</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Status</th>
+                <th className="text-[12px] font-bold text-[#888] uppercase px-4 py-3">Action</th>
               </tr></thead>
               <tbody>
                 {payments.map((p: any) => (
@@ -48,7 +48,7 @@ export default function AdminPayments() {
                     <td className="px-4 py-3 text-xs text-[#555]">Rs {p.amount}</td>
                     <td className="px-4 py-3 text-xs text-[#555] uppercase">{p.paymentMethod}</td>
                     <td className="px-4 py-3 text-xs text-[#555]">{p.upiId || "-"}</td>
-                    <td className="px-4 py-3"><span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${statusClass(p.status)}`}>{p.status}</span></td>
+                    <td className="px-4 py-3"><span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${statusClass(p.status)}`}>{p.status}</span></td>
                     <td className="px-4 py-3">
                       <div className="flex gap-1">
                         <button onClick={() => updateStatus.mutate({ id: p.id, status: "approved" })} className="p-1 bg-green-50 rounded hover:bg-green-100" title="Approve"><CheckCircle size={12} className="text-green-600" /></button>

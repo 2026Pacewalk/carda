@@ -73,7 +73,7 @@ export default function CardBuilder() {
 
   const Input = ({ label, field, type = "text", placeholder, icon: Icon }: { label: string, field: string, type?: string, placeholder: string, icon: any }) => (
     <div className="mb-3">
-      <label className="text-[11px] font-bold text-[#0a2b4a] mb-1 flex items-center gap-1">
+      <label className="text-[13px] font-bold text-[#0a2b4a] mb-1 flex items-center gap-1">
         {Icon && <Icon size={12} className="text-[#ff8309]" />} {label}
       </label>
       <input
@@ -95,7 +95,7 @@ export default function CardBuilder() {
       <div className="flex items-center gap-1 mb-6">
         {steps.map((s, i) => (
           <div key={s.id} className="flex items-center flex-1">
-            <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 ${
+            <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold flex-shrink-0 ${
               step > s.id ? "bg-green-500 text-white" :
               step === s.id ? "bg-[#ff8309] text-white" : "bg-gray-200 text-[#888]"
             }`}>
@@ -114,7 +114,7 @@ export default function CardBuilder() {
           <Input label="Owner Name" field="ownerName" placeholder="e.g., Rahul Sharma" icon={User} />
           <Input label="Designation" field="designation" placeholder="e.g., Founder & CEO" icon={User} />
           <div className="mb-3">
-            <label className="text-[11px] font-bold text-[#0a2b4a] mb-1 block">About Business</label>
+            <label className="text-[13px] font-bold text-[#0a2b4a] mb-1 block">About Business</label>
             <textarea
               value={form.aboutBusiness}
               onChange={(e) => update("aboutBusiness", e.target.value)}
@@ -125,7 +125,7 @@ export default function CardBuilder() {
           </div>
           {/* Services */}
           <div className="mb-3">
-            <label className="text-[11px] font-bold text-[#0a2b4a] mb-1 block">Services</label>
+            <label className="text-[13px] font-bold text-[#0a2b4a] mb-1 block">Services</label>
             {form.servicesList.map((s, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input
@@ -139,7 +139,7 @@ export default function CardBuilder() {
                 )}
               </div>
             ))}
-            <button onClick={addService} className="text-[11px] text-[#ff8309] font-medium hover:underline">+ Add Service</button>
+            <button onClick={addService} className="text-[13px] text-[#ff8309] font-medium hover:underline">+ Add Service</button>
           </div>
         </div>
       )}
@@ -186,7 +186,7 @@ export default function CardBuilder() {
                 </div>
                 <div className="p-2 text-center">
                   <p className="text-xs font-bold text-[#0a2b4a]">{t.name}</p>
-                  <p className="text-[10px] text-[#888] capitalize">{t.category} &middot; {t.minPackage}</p>
+                  <p className="text-[12px] text-[#888] capitalize">{t.category} &middot; {t.minPackage}</p>
                 </div>
                 {form.templateId === t.id && (
                   <div className="absolute top-2 right-2 w-6 h-6 bg-[#ff8309] rounded-full flex items-center justify-center">
@@ -211,16 +211,16 @@ export default function CardBuilder() {
                   {(form.ownerName || form.businessName || "?").charAt(0)}
                 </div>
                 <h3 className="font-bold text-sm">{form.ownerName || "Your Name"}</h3>
-                <p className="text-white/50 text-[10px]">{form.designation || "Designation"}</p>
-                {form.businessName && <p className="text-[#ff8309] text-[10px] font-bold mt-1">{form.businessName}</p>}
+                <p className="text-white/50 text-[12px]">{form.designation || "Designation"}</p>
+                {form.businessName && <p className="text-[#ff8309] text-[12px] font-bold mt-1">{form.businessName}</p>}
               </div>
               <div className="space-y-1.5">
-                {form.mobileNumber && <p className="text-[10px] text-white/70 flex items-center gap-1"><Phone size={10} /> {form.mobileNumber}</p>}
-                {form.whatsappNumber && <p className="text-[10px] text-white/70 flex items-center gap-1"><Phone size={10} /> WhatsApp: {form.whatsappNumber}</p>}
-                {form.email && <p className="text-[10px] text-white/70 flex items-center gap-1"><Mail size={10} /> {form.email}</p>}
-                {form.website && <p className="text-[10px] text-white/70 flex items-center gap-1"><Globe size={10} /> {form.website}</p>}
-                {form.address && <p className="text-[10px] text-white/70 flex items-center gap-1"><MapPin size={10} /> {form.address}</p>}
-                {form.upiId && <p className="text-[10px] text-white/70 flex items-center gap-1"><CreditCard size={10} /> UPI: {form.upiId}</p>}
+                {form.mobileNumber && <p className="text-[12px] text-white/70 flex items-center gap-1"><Phone size={10} /> {form.mobileNumber}</p>}
+                {form.whatsappNumber && <p className="text-[12px] text-white/70 flex items-center gap-1"><Phone size={10} /> WhatsApp: {form.whatsappNumber}</p>}
+                {form.email && <p className="text-[12px] text-white/70 flex items-center gap-1"><Mail size={10} /> {form.email}</p>}
+                {form.website && <p className="text-[12px] text-white/70 flex items-center gap-1"><Globe size={10} /> {form.website}</p>}
+                {form.address && <p className="text-[12px] text-white/70 flex items-center gap-1"><MapPin size={10} /> {form.address}</p>}
+                {form.upiId && <p className="text-[12px] text-white/70 flex items-center gap-1"><CreditCard size={10} /> UPI: {form.upiId}</p>}
               </div>
             </div>
           </div>
@@ -228,7 +228,7 @@ export default function CardBuilder() {
           {/* Summary */}
           <div className="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
             <h3 className="text-xs font-bold text-[#0a2b4a] mb-3">Details Summary</h3>
-            <div className="grid grid-cols-2 gap-2 text-[11px]">
+            <div className="grid grid-cols-2 gap-2 text-[13px]">
               {Object.entries({
                 "Business": form.businessName || "-",
                 "Owner": form.ownerName || "-",

@@ -44,7 +44,7 @@ export default function AdminPage() {
           </h1>
           <p className="text-xs text-[#888] mt-0.5">Manage cards, tickets, and view analytics</p>
         </div>
-        <span className="px-3 py-1 bg-[#ff8309]/10 text-[#ff8309] rounded-full text-[11px] font-bold w-fit">
+        <span className="px-3 py-1 bg-[#ff8309]/10 text-[#ff8309] rounded-full text-[13px] font-bold w-fit">
           Admin: {user.name}
         </span>
       </div>
@@ -61,7 +61,7 @@ export default function AdminPage() {
               <TrendingUp size={14} className="text-green-500" />
             </div>
             <p className="text-2xl font-extrabold text-[#0a2b4a]">{stat.value}</p>
-            <p className="text-[11px] text-[#888]">{stat.label}</p>
+            <p className="text-[13px] text-[#888]">{stat.label}</p>
           </motion.div>
         ))}
       </div>
@@ -98,9 +98,9 @@ export default function AdminPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-bold text-[#0a2b4a] truncate">{card.businessName}</p>
-                      <p className="text-[10px] text-[#888]">{card.ownerName} • {card.mobileNumber}</p>
+                      <p className="text-[12px] text-[#888]">{card.ownerName} • {card.mobileNumber}</p>
                     </div>
-                    <span className="text-[10px] text-[#888]">{new Date(card.createdAt).toLocaleDateString()}</span>
+                    <span className="text-[12px] text-[#888]">{new Date(card.createdAt).toLocaleDateString()}</span>
                   </div>
                 ))}
                 {(!allCards || allCards.length === 0) && (
@@ -116,11 +116,11 @@ export default function AdminPage() {
               <table className="w-full text-left">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="text-[10px] font-bold text-[#888] uppercase pb-2 pr-3">Business</th>
-                    <th className="text-[10px] font-bold text-[#888] uppercase pb-2 pr-3">Owner</th>
-                    <th className="text-[10px] font-bold text-[#888] uppercase pb-2 pr-3">Contact</th>
-                    <th className="text-[10px] font-bold text-[#888] uppercase pb-2 pr-3">Downloads</th>
-                    <th className="text-[10px] font-bold text-[#888] uppercase pb-2">Date</th>
+                    <th className="text-[12px] font-bold text-[#888] uppercase pb-2 pr-3">Business</th>
+                    <th className="text-[12px] font-bold text-[#888] uppercase pb-2 pr-3">Owner</th>
+                    <th className="text-[12px] font-bold text-[#888] uppercase pb-2 pr-3">Contact</th>
+                    <th className="text-[12px] font-bold text-[#888] uppercase pb-2 pr-3">Downloads</th>
+                    <th className="text-[12px] font-bold text-[#888] uppercase pb-2">Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -128,7 +128,7 @@ export default function AdminPage() {
                     <tr key={i} className="border-b border-gray-50 hover:bg-[#f8f7f7] transition-colors">
                       <td className="py-2.5 pr-3">
                         <div className="flex items-center gap-2">
-                          <div className="w-7 h-7 bg-gradient-to-br from-[#0a2b4a] to-[#103558] rounded-lg flex items-center justify-center text-white text-[10px] font-bold">
+                          <div className="w-7 h-7 bg-gradient-to-br from-[#0a2b4a] to-[#103558] rounded-lg flex items-center justify-center text-white text-[12px] font-bold">
                             {card.businessName?.charAt(0) ?? "C"}
                           </div>
                           <span className="text-xs font-medium text-[#0a2b4a]">{card.businessName}</span>
@@ -139,7 +139,7 @@ export default function AdminPage() {
                       <td className="text-xs text-[#555] pr-3">
                         <span className="flex items-center gap-1"><Download size={10} className="text-[#ff8309]" /> {card.downloadCount ?? 0}</span>
                       </td>
-                      <td className="text-[10px] text-[#888]">{new Date(card.createdAt).toLocaleDateString()}</td>
+                      <td className="text-[12px] text-[#888]">{new Date(card.createdAt).toLocaleDateString()}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -163,7 +163,7 @@ export default function AdminPage() {
                       <MessageCircle size={14} className="text-[#ff8309]" />
                       <h4 className="text-xs font-bold text-[#0a2b4a]">{ticket.subject}</h4>
                     </div>
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                    <span className={`px-2 py-0.5 rounded-full text-[12px] font-bold ${
                       ticket.status === "open" ? "bg-yellow-100 text-yellow-700" :
                       ticket.status === "resolved" ? "bg-green-100 text-green-700" :
                       ticket.status === "in_progress" ? "bg-blue-100 text-blue-700" :
@@ -173,7 +173,7 @@ export default function AdminPage() {
                   <p className="text-xs text-[#555] mb-2 pl-5">{ticket.message}</p>
                   {ticket.adminReply && (
                     <div className="pl-5 mb-2 p-2 bg-white rounded-lg border border-gray-100">
-                      <p className="text-[10px] font-bold text-[#0a2b4a] mb-0.5">Admin Reply:</p>
+                      <p className="text-[12px] font-bold text-[#0a2b4a] mb-0.5">Admin Reply:</p>
                       <p className="text-xs text-[#555]">{ticket.adminReply}</p>
                     </div>
                   )}
@@ -181,7 +181,7 @@ export default function AdminPage() {
                     <select
                       value={ticket.status}
                       onChange={(e) => updateTicket.mutate({ id: ticket.id, status: e.target.value as any })}
-                      className="text-[10px] border border-gray-200 rounded-lg px-2 py-1 bg-white focus:outline-none focus:border-[#ff8309]"
+                      className="text-[12px] border border-gray-200 rounded-lg px-2 py-1 bg-white focus:outline-none focus:border-[#ff8309]"
                     >
                       <option value="open">Open</option>
                       <option value="in_progress">In Progress</option>
@@ -193,7 +193,7 @@ export default function AdminPage() {
                       value={replyText[ticket.id] ?? ""}
                       onChange={(e) => setReplyText(prev => ({ ...prev, [ticket.id]: e.target.value }))}
                       placeholder="Reply..."
-                      className="text-[10px] border border-gray-200 rounded-lg px-2 py-1 flex-1 focus:outline-none focus:border-[#ff8309]"
+                      className="text-[12px] border border-gray-200 rounded-lg px-2 py-1 flex-1 focus:outline-none focus:border-[#ff8309]"
                     />
                     <button
                       onClick={() => {
@@ -202,7 +202,7 @@ export default function AdminPage() {
                           setReplyText(prev => ({ ...prev, [ticket.id]: "" }));
                         }
                       }}
-                      className="text-[10px] px-3 py-1 bg-[#ff8309] text-white rounded-lg font-bold hover:bg-[#e57400] transition-colors"
+                      className="text-[12px] px-3 py-1 bg-[#ff8309] text-white rounded-lg font-bold hover:bg-[#e57400] transition-colors"
                     >
                       Reply
                     </button>

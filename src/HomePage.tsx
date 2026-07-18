@@ -100,15 +100,15 @@ export default function HomePage() {
                         <UserIcon />
                       </div>
                       <h3 className="text-white font-bold text-sm">Dr. Rajesh Sharma</h3>
-                      <p className="text-white/60 text-[10px]">Senior Cardiologist</p>
+                      <p className="text-white/60 text-[12px]">Senior Cardiologist</p>
                     </div>
                     <div className="p-4 space-y-2">
-                      <div className="flex items-center gap-2 text-[11px] text-[#555]"><Phone size={10} className="text-[#ff8309]" /> +91 98765 43210</div>
-                      <div className="flex items-center gap-2 text-[11px] text-[#555]"><MapPin size={10} className="text-[#ff8309]" /> Chandigarh, India</div>
-                      <div className="flex items-center gap-2 text-[11px] text-[#555]"><CreditCard size={10} className="text-[#ff8309]" /> Pay via UPI</div>
+                      <div className="flex items-center gap-2 text-[13px] text-[#555]"><Phone size={10} className="text-[#ff8309]" /> +91 98765 43210</div>
+                      <div className="flex items-center gap-2 text-[13px] text-[#555]"><MapPin size={10} className="text-[#ff8309]" /> Chandigarh, India</div>
+                      <div className="flex items-center gap-2 text-[13px] text-[#555]"><CreditCard size={10} className="text-[#ff8309]" /> Pay via UPI</div>
                       <div className="grid grid-cols-2 gap-2 mt-3">
-                        <button className="bg-[#ff8309] text-white text-[10px] font-bold py-1.5 rounded-lg">Call Now</button>
-                        <button className="bg-green-500 text-white text-[10px] font-bold py-1.5 rounded-lg">WhatsApp</button>
+                        <button className="bg-[#ff8309] text-white text-[12px] font-bold py-1.5 rounded-lg">Call Now</button>
+                        <button className="bg-green-500 text-white text-[12px] font-bold py-1.5 rounded-lg">WhatsApp</button>
                       </div>
                     </div>
                   </div>
@@ -137,7 +137,7 @@ export default function HomePage() {
                 className="flex flex-col items-center">
                 <stat.icon size={20} className="text-[#ff8309] mb-2" />
                 <p className="text-xl md:text-2xl font-extrabold text-[#0a2b4a]">{stat.value}</p>
-                <p className="text-[11px] text-[#888]">{stat.label}</p>
+                <p className="text-[13px] text-[#888]">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -206,7 +206,7 @@ export default function HomePage() {
             {pricingPlans.map((plan, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={priceInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.35, delay: i * 0.1 }}
                 className={`rounded-2xl p-6 relative ${plan.popular ? 'bg-gradient-to-br from-[#0a2b4a] to-[#103558] text-white shadow-xl scale-105 z-10' : 'bg-white border border-gray-200'}`}>
-                {plan.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-[#ff8309] rounded-full text-white text-[10px] font-bold">Most Popular</span>}
+                {plan.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-[#ff8309] rounded-full text-white text-[12px] font-bold">Most Popular</span>}
                 <h3 className={`font-bold text-lg mb-1 ${plan.popular ? 'text-white' : 'text-[#0a2b4a]'}`}>{plan.name}</h3>
                 <div className="flex items-baseline gap-1 mb-4">
                   <span className={`text-3xl font-extrabold ${plan.popular ? 'text-[#ff8309]' : 'text-[#0a2b4a]'}`}>Rs {plan.price}</span>
@@ -245,7 +245,7 @@ export default function HomePage() {
                   <ind.icon className="text-white" size={18} />
                 </div>
                 <h3 className="text-[#0a2b4a] font-bold text-xs mb-0.5 group-hover:text-[#ff8309] transition-colors">{ind.title}</h3>
-                <p className="text-[#999] text-[10px]">{ind.desc}</p>
+                <p className="text-[#999] text-[12px]">{ind.desc}</p>
               </motion.a>
             ))}
           </div>
@@ -266,7 +266,7 @@ export default function HomePage() {
             {blogPreview.map((post, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={blogInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="bg-white rounded-xl p-5 hover:shadow-md transition-all border border-gray-100">
-                <span className="px-2 py-0.5 bg-[#ff8309]/10 text-[#ff8309] rounded-full text-[10px] font-bold uppercase">Guide</span>
+                <span className="px-2 py-0.5 bg-[#ff8309]/10 text-[#ff8309] rounded-full text-[12px] font-bold uppercase">Guide</span>
                 <h3 className="text-[#0a2b4a] font-bold text-sm mt-2 mb-2">{post.title}</h3>
                 <p className="text-[#888] text-xs leading-relaxed mb-3">{post.excerpt}</p>
                 <Link to={`/blog/${post.slug}`} className="text-[#ff8309] text-xs font-bold">Read More &rarr;</Link>
@@ -296,7 +296,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h3 className="text-[#0a2b4a] font-bold text-xs group-hover:text-[#ff8309] transition-colors">{loc.name}</h3>
-                  <span className="text-[#999] text-[10px]">PDF Business Card</span>
+                  <span className="text-[#999] text-[12px]">PDF Business Card</span>
                 </div>
               </motion.a>
             ))}
@@ -327,7 +327,7 @@ export default function HomePage() {
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0a2b4a] to-[#103558] flex items-center justify-center text-white text-xs font-bold">{t.name.charAt(0)}</div>
                   <div>
                     <p className="text-xs font-bold text-[#0a2b4a]">{t.name}</p>
-                    <p className="text-[10px] text-[#888]">{t.role}</p>
+                    <p className="text-[12px] text-[#888]">{t.role}</p>
                   </div>
                 </div>
               </motion.div>
@@ -368,7 +368,7 @@ function FloatingBadge({ icon: Icon, text, className, delay }: { icon: typeof Do
       <div className="w-7 h-7 bg-[#ff8309]/10 rounded-lg flex items-center justify-center">
         <Icon size={13} className="text-[#ff8309]" />
       </div>
-      <span className="text-[10px] font-bold text-[#0a2b4a]">{text}</span>
+      <span className="text-[12px] font-bold text-[#0a2b4a]">{text}</span>
     </motion.div>
   );
 }

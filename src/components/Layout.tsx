@@ -116,7 +116,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   { label: "Pricing", path: "/pricing" },
                   { label: "Samples", path: "/pdf-card-samples" },
                 ].map((p) => (
-                  <Link key={p.label} to={p.path} className="block text-[11px] hover:text-[#ff8309] transition-colors">{p.label}</Link>
+                  <Link key={p.label} to={p.path} className="block text-[13px] hover:text-[#ff8309] transition-colors">{p.label}</Link>
                 ))}
               </div>
             </div>
@@ -124,25 +124,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Services</h4>
               <div className="space-y-1.5">
                 {["PDF Card", "QR Code", "NFC Card", "Web Card"].map((s) => (
-                  <Link key={s} to="/pdf-digital-business-card" className="block text-[11px] hover:text-[#ff8309] transition-colors">{s}</Link>
+                  <Link key={s} to="/pdf-digital-business-card" className="block text-[13px] hover:text-[#ff8309] transition-colors">{s}</Link>
                 ))}
               </div>
             </div>
             <div>
               <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Legal</h4>
               <div className="space-y-1.5">
-                <Link to="/privacy-policy" className="block text-[11px] hover:text-[#ff8309] transition-colors">Privacy</Link>
-                <Link to="/terms" className="block text-[11px] hover:text-[#ff8309] transition-colors">Terms</Link>
-                <Link to="/refund-policy" className="block text-[11px] hover:text-[#ff8309] transition-colors">Refund</Link>
+                <Link to="/privacy-policy" className="block text-[13px] hover:text-[#ff8309] transition-colors">Privacy</Link>
+                <Link to="/terms" className="block text-[13px] hover:text-[#ff8309] transition-colors">Terms</Link>
+                <Link to="/refund-policy" className="block text-[13px] hover:text-[#ff8309] transition-colors">Refund</Link>
               </div>
             </div>
             <div>
               <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">Contact</h4>
-              <a href="tel:+919517722444" className="flex items-center gap-1.5 text-[11px] hover:text-[#ff8309] transition-colors mb-1"><Phone size={10} /> +91 95177-22444</a>
-              <a href="https://wa.me/919517722444" target="_blank" className="flex items-center gap-1.5 text-[11px] hover:text-green-400 transition-colors"><MessageCircle size={10} /> WhatsApp</a>
+              <a href="tel:+919517722444" className="flex items-center gap-1.5 text-[13px] hover:text-[#ff8309] transition-colors mb-1"><Phone size={10} /> +91 95177-22444</a>
+              <a href="https://wa.me/919517722444" target="_blank" className="flex items-center gap-1.5 text-[13px] hover:text-green-400 transition-colors"><MessageCircle size={10} /> WhatsApp</a>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-4 text-center text-[10px]">
+          <div className="border-t border-white/10 pt-4 text-center text-[12px]">
             &copy; 2020-2026 MyCarda. All rights reserved.
           </div>
         </div>

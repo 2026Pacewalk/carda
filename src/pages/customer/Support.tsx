@@ -44,7 +44,7 @@ export default function CustomerSupport() {
         <MessageCircle size={24} className="text-green-600" />
         <div>
           <p className="text-sm font-bold text-green-800">Chat on WhatsApp</p>
-          <p className="text-[10px] text-green-600">Get instant help via WhatsApp</p>
+          <p className="text-[12px] text-green-600">Get instant help via WhatsApp</p>
         </div>
       </a>
 
@@ -76,13 +76,13 @@ export default function CustomerSupport() {
               <div key={t.id} className="p-3 bg-[#f8f7f7] rounded-xl">
                 <div className="flex items-center justify-between mb-1">
                   <p className="text-xs font-bold text-[#0a2b4a]">{t.subject}</p>
-                  <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${getStatusClass(t.status)}`}>{t.status}</span>
+                  <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${getStatusClass(t.status)}`}>{t.status}</span>
                 </div>
-                <p className="text-[10px] text-[#555]">{t.message}</p>
+                <p className="text-[12px] text-[#555]">{t.message}</p>
                 {t.adminReply && (
                   <div className="mt-2 p-2 bg-white rounded-lg border border-gray-100">
-                    <p className="text-[9px] font-bold text-[#ff8309]">Reply:</p>
-                    <p className="text-[10px] text-[#555]">{t.adminReply}</p>
+                    <p className="text-[11px] font-bold text-[#ff8309]">Reply:</p>
+                    <p className="text-[12px] text-[#555]">{t.adminReply}</p>
                   </div>
                 )}
               </div>

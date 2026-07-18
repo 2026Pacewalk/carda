@@ -46,33 +46,33 @@ export default function CardList() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-bold text-xs truncate">{card.ownerName ?? "No Name"}</p>
-                    <p className="text-white/50 text-[10px] truncate">{card.designation ?? "No Designation"}</p>
+                    <p className="text-white/50 text-[12px] truncate">{card.designation ?? "No Designation"}</p>
                   </div>
                 </div>
               </div>
 
               <div className="p-4">
                 <p className="text-[#0a2b4a] font-bold text-xs mb-0.5 truncate">{card.businessName ?? "Untitled"}</p>
-                <p className="text-[#888] text-[10px] mb-2 truncate">{card.mobileNumber ?? "No phone"}</p>
+                <p className="text-[#888] text-[12px] mb-2 truncate">{card.mobileNumber ?? "No phone"}</p>
 
                 <div className="flex items-center gap-2 mb-3">
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
+                  <span className={`text-[12px] px-2 py-0.5 rounded-full font-bold ${
                     card.status === "published" ? "bg-green-50 text-green-600" :
                     card.status === "draft" ? "bg-amber-50 text-amber-600" : "bg-gray-100 text-gray-500"
                   }`}>
                     {card.status}
                   </span>
-                  <span className="text-[10px] text-[#888]">{card.downloadCount ?? 0} downloads</span>
+                  <span className="text-[12px] text-[#888]">{card.downloadCount ?? 0} downloads</span>
                 </div>
 
                 <div className="flex gap-1.5">
-                  <Link to={`/dashboard/cards/${card.id}`} className="flex-1 flex items-center justify-center gap-1 py-2 bg-[#f8f7f7] rounded-lg text-[10px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 hover:text-[#ff8309] transition-all">
+                  <Link to={`/dashboard/cards/${card.id}`} className="flex-1 flex items-center justify-center gap-1 py-2 bg-[#f8f7f7] rounded-lg text-[12px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 hover:text-[#ff8309] transition-all">
                     <Eye size={12} /> View
                   </Link>
-                  <Link to={`/dashboard/cards/${card.id}/edit`} className="flex-1 flex items-center justify-center gap-1 py-2 bg-[#f8f7f7] rounded-lg text-[10px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 hover:text-[#ff8309] transition-all">
+                  <Link to={`/dashboard/cards/${card.id}/edit`} className="flex-1 flex items-center justify-center gap-1 py-2 bg-[#f8f7f7] rounded-lg text-[12px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 hover:text-[#ff8309] transition-all">
                     <Edit size={12} /> Edit
                   </Link>
-                  <button onClick={() => { /* download logic */ }} className="flex-1 flex items-center justify-center gap-1 py-2 bg-[#f8f7f7] rounded-lg text-[10px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 hover:text-[#ff8309] transition-all">
+                  <button onClick={() => { /* download logic */ }} className="flex-1 flex items-center justify-center gap-1 py-2 bg-[#f8f7f7] rounded-lg text-[12px] font-bold text-[#0a2b4a] hover:bg-[#ff8309]/10 hover:text-[#ff8309] transition-all">
                     <Download size={12} /> PDF
                   </button>
                   <button
@@ -85,10 +85,10 @@ export default function CardList() {
 
                 {confirmDelete === card.id && (
                   <div className="mt-2 p-2 bg-red-50 rounded-lg text-center">
-                    <p className="text-[10px] text-red-600 mb-1.5">Delete this card permanently?</p>
+                    <p className="text-[12px] text-red-600 mb-1.5">Delete this card permanently?</p>
                     <div className="flex gap-2 justify-center">
-                      <button onClick={() => { deleteCard.mutate({ id: card.id }); setConfirmDelete(null); }} className="px-3 py-1 bg-red-500 text-white rounded-lg text-[10px] font-bold">Delete</button>
-                      <button onClick={() => setConfirmDelete(null)} className="px-3 py-1 bg-white text-[#888] rounded-lg text-[10px] font-bold border border-gray-200">Cancel</button>
+                      <button onClick={() => { deleteCard.mutate({ id: card.id }); setConfirmDelete(null); }} className="px-3 py-1 bg-red-500 text-white rounded-lg text-[12px] font-bold">Delete</button>
+                      <button onClick={() => setConfirmDelete(null)} className="px-3 py-1 bg-white text-[#888] rounded-lg text-[12px] font-bold border border-gray-200">Cancel</button>
                     </div>
                   </div>
                 )}

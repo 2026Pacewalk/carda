@@ -30,7 +30,7 @@ export default function AdminDashboard() {
             className={`bg-gradient-to-br ${s.color} rounded-xl p-4 text-white`}>
             <s.icon size={18} className="mb-2 opacity-70" />
             <p className="text-2xl font-extrabold">{s.value}</p>
-            <p className="text-[10px] opacity-70">{s.label}</p>
+            <p className="text-[12px] opacity-70">{s.label}</p>
           </motion.div>
         ))}
       </div>
@@ -46,7 +46,7 @@ export default function AdminDashboard() {
           <Link key={i} to={item.path} className="bg-white rounded-xl p-4 border border-gray-100 hover:shadow-md hover:border-[#ff8309]/20 transition-all">
             <item.icon size={18} className="text-[#ff8309] mb-2" />
             <p className="text-xs font-bold text-[#0a2b4a]">{item.label}</p>
-            <p className="text-[10px] text-[#888]">{item.desc}</p>
+            <p className="text-[12px] text-[#888]">{item.desc}</p>
           </Link>
         ))}
       </div>
@@ -59,10 +59,10 @@ export default function AdminDashboard() {
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b border-gray-100">
-                  <th className="text-[10px] font-bold text-[#888] uppercase pb-2">Name</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase pb-2">Email</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase pb-2">Mobile</th>
-                  <th className="text-[10px] font-bold text-[#888] uppercase pb-2">Status</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase pb-2">Name</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase pb-2">Email</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase pb-2">Mobile</th>
+                  <th className="text-[12px] font-bold text-[#888] uppercase pb-2">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -71,7 +71,7 @@ export default function AdminDashboard() {
                     <td className="py-2 text-xs font-medium text-[#0a2b4a]">{c.name}</td>
                     <td className="py-2 text-xs text-[#555]">{c.email}</td>
                     <td className="py-2 text-xs text-[#555]">{c.mobile}</td>
-                    <td className="py-2"><span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${c.status === "active" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>{c.status}</span></td>
+                    <td className="py-2"><span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${c.status === "active" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>{c.status}</span></td>
                   </tr>
                 ))}
               </tbody>

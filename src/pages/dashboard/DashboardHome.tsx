@@ -30,7 +30,7 @@ export default function DashboardHome() {
               <stat.icon size={14} className="text-white" />
             </div>
             <p className="text-2xl font-extrabold text-[#0a2b4a]">{stat.value}</p>
-            <p className="text-[#888] text-[11px]">{stat.label}</p>
+            <p className="text-[#888] text-[13px]">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -43,7 +43,7 @@ export default function DashboardHome() {
           </div>
           <div>
             <p className="text-white font-bold text-sm">Create New Card</p>
-            <p className="text-white/50 text-[11px]">Build a professional PDF card in minutes</p>
+            <p className="text-white/50 text-[13px]">Build a professional PDF card in minutes</p>
           </div>
           <ArrowRight size={18} className="text-white/40 ml-auto group-hover:text-[#ff8309] transition-colors" />
         </Link>
@@ -54,7 +54,7 @@ export default function DashboardHome() {
           </div>
           <div>
             <p className="text-[#0a2b4a] font-bold text-sm">My Cards</p>
-            <p className="text-[#888] text-[11px]">View, edit and download your cards</p>
+            <p className="text-[#888] text-[13px]">View, edit and download your cards</p>
           </div>
           <ArrowRight size={18} className="text-[#ccc] ml-auto group-hover:text-[#ff8309] transition-colors" />
         </Link>
@@ -64,7 +64,7 @@ export default function DashboardHome() {
       <div>
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-sm font-bold text-[#0a2b4a]">Recent Cards</h2>
-          <Link to="/dashboard/cards" className="text-[11px] text-[#ff8309] font-medium hover:underline">View All</Link>
+          <Link to="/dashboard/cards" className="text-[13px] text-[#ff8309] font-medium hover:underline">View All</Link>
         </div>
         {cards && cards.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -80,15 +80,15 @@ export default function DashboardHome() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-[#0a2b4a] font-bold text-xs truncate">{card.businessName ?? card.ownerName ?? "Untitled Card"}</p>
-                    <p className="text-[#999] text-[10px] truncate">{card.designation ?? "No designation"}</p>
+                    <p className="text-[#999] text-[12px] truncate">{card.designation ?? "No designation"}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+                  <span className={`text-[12px] px-2 py-0.5 rounded-full font-medium ${
                     card.status === "published" ? "bg-green-50 text-green-600" :
                     card.status === "draft" ? "bg-amber-50 text-amber-600" : "bg-gray-100 text-gray-500"
                   }`}>{card.status}</span>
-                  <span className="text-[10px] text-[#999]">{card.downloadCount ?? 0} downloads</span>
+                  <span className="text-[12px] text-[#999]">{card.downloadCount ?? 0} downloads</span>
                 </div>
               </Link>
             ))}

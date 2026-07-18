@@ -103,7 +103,7 @@ export default function PricingPage() {
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: i * 0.1 }}
                 className={`relative rounded-2xl overflow-hidden ${plan.popular ? 'bg-gradient-to-b from-[#0a2b4a] to-[#071c2c] ring-2 ring-[#ff8309]/30 shadow-2xl' : 'bg-white border border-gray-100 shadow-lg'}`}>
                 {plan.popular && (
-                  <div className="bg-gradient-to-r from-[#ff8309] to-[#e57400] text-white text-center py-1.5 text-[11px] font-extrabold uppercase tracking-[0.2em]">
+                  <div className="bg-gradient-to-r from-[#ff8309] to-[#e57400] text-white text-center py-1.5 text-[13px] font-extrabold uppercase tracking-[0.2em]">
                     <Star size={10} className="inline mr-1" fill="white" /> Most Popular
                   </div>
                 )}

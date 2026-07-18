@@ -26,7 +26,7 @@ export default function CustomerDashboard() {
             className={`bg-gradient-to-br ${s.color} rounded-xl p-4 text-white`}>
             <s.icon size={18} className="mb-2 opacity-70" />
             <p className="text-2xl font-extrabold">{s.value}</p>
-            <p className="text-[10px] opacity-70">{s.label}</p>
+            <p className="text-[12px] opacity-70">{s.label}</p>
           </motion.div>
         ))}
       </div>
@@ -39,25 +39,25 @@ export default function CustomerDashboard() {
             <div className="w-9 h-9 bg-[#ff8309]/10 rounded-lg flex items-center justify-center group-hover:bg-[#ff8309]">
               <Plus size={16} className="text-[#ff8309] group-hover:text-white" />
             </div>
-            <span className="text-[10px] font-bold text-[#0a2b4a]">Create Card</span>
+            <span className="text-[12px] font-bold text-[#0a2b4a]">Create Card</span>
           </Link>
           <Link to="/customer/my-cards" className="flex flex-col items-center gap-1.5 p-3 bg-[#f8f7f7] rounded-xl hover:bg-[#ff8309]/10 transition-all group">
             <div className="w-9 h-9 bg-[#0a2b4a]/10 rounded-lg flex items-center justify-center group-hover:bg-[#0a2b4a]">
               <FileText size={16} className="text-[#0a2b4a] group-hover:text-white" />
             </div>
-            <span className="text-[10px] font-bold text-[#0a2b4a]">My Cards</span>
+            <span className="text-[12px] font-bold text-[#0a2b4a]">My Cards</span>
           </Link>
           <Link to="/customer/orders" className="flex flex-col items-center gap-1.5 p-3 bg-[#f8f7f7] rounded-xl hover:bg-[#ff8309]/10 transition-all group">
             <div className="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-500">
               <ShoppingBag size={16} className="text-green-600 group-hover:text-white" />
             </div>
-            <span className="text-[10px] font-bold text-[#0a2b4a]">Orders</span>
+            <span className="text-[12px] font-bold text-[#0a2b4a]">Orders</span>
           </Link>
           <Link to="/customer/support" className="flex flex-col items-center gap-1.5 p-3 bg-[#f8f7f7] rounded-xl hover:bg-[#ff8309]/10 transition-all group">
             <div className="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-500">
               <HelpCircle size={16} className="text-blue-600 group-hover:text-white" />
             </div>
-            <span className="text-[10px] font-bold text-[#0a2b4a]">Support</span>
+            <span className="text-[12px] font-bold text-[#0a2b4a]">Support</span>
           </Link>
         </div>
       </div>
@@ -66,7 +66,7 @@ export default function CustomerDashboard() {
       <div className="bg-white rounded-xl border border-gray-100 p-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-bold text-[#0a2b4a]">Recent Cards</h3>
-          <Link to="/customer/my-cards" className="text-[10px] text-[#ff8309] font-bold">View All</Link>
+          <Link to="/customer/my-cards" className="text-[12px] text-[#ff8309] font-bold">View All</Link>
         </div>
         {stats?.recentCards && stats.recentCards.length > 0 ? (
           <div className="space-y-2">
@@ -77,7 +77,7 @@ export default function CustomerDashboard() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-xs font-bold text-[#0a2b4a] truncate">{card.businessName || "Untitled Card"}</p>
-                  <p className="text-[10px] text-[#888]">{card.ownerName} • {card.status}</p>
+                  <p className="text-[12px] text-[#888]">{card.ownerName} • {card.status}</p>
                 </div>
                 <div className="flex gap-1">
                   <Link to={`/customer/my-cards/${card.id}`} className="p-1.5 bg-white rounded-lg hover:bg-[#ff8309]/10">

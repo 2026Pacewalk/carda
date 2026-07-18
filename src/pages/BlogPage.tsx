@@ -93,14 +93,14 @@ export default function BlogPage() {
                   <div className="aspect-[16/9] bg-gradient-to-br from-[#0a2b4a] to-[#103558] flex items-center justify-center relative overflow-hidden">
                     <img src={featured.image} alt={featured.title} onError={(e) => { const t = e.currentTarget; t.onerror = null; t.src = '/images/digital.jpg'; }} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-[#ff8309] text-white rounded-full text-[10px] font-bold uppercase">Featured</span>
+                      <span className="px-3 py-1 bg-[#ff8309] text-white rounded-full text-[12px] font-bold uppercase">Featured</span>
                     </div>
                   </div>
                   <div className="p-5 md:p-6">
-                    <span className="text-[11px] text-[#ff8309] font-bold uppercase">{featured.category}</span>
+                    <span className="text-[13px] text-[#ff8309] font-bold uppercase">{featured.category}</span>
                     <h2 className="text-lg md:text-xl font-bold text-[#0a2b4a] mt-1 mb-2 group-hover:text-[#ff8309] transition-colors">{featured.title}</h2>
                     <p className="text-sm text-[#555] leading-relaxed mb-3">{featured.excerpt}</p>
-                    <div className="flex items-center gap-3 text-[11px] text-[#aaa]">
+                    <div className="flex items-center gap-3 text-[13px] text-[#aaa]">
                       <span className="flex items-center gap-1"><Calendar size={11} /> {featured.date}</span>
                       <span className="flex items-center gap-1"><Clock size={11} /> {featured.readTime}</span>
                     </div>
@@ -121,9 +121,9 @@ export default function BlogPage() {
                         <img src={post.image} alt={post.title} onError={(e) => { const t = e.currentTarget; t.onerror = null; t.src = '/images/digital.jpg'; }} className="w-full h-full object-cover opacity-70" loading="lazy" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className="text-[10px] text-[#ff8309] font-bold uppercase">{post.category}</span>
+                        <span className="text-[12px] text-[#ff8309] font-bold uppercase">{post.category}</span>
                         <h4 className="text-sm font-bold text-[#0a2b4a] group-hover:text-[#ff8309] transition-colors line-clamp-2 leading-snug">{post.title}</h4>
-                        <span className="text-[10px] text-[#aaa] flex items-center gap-1 mt-1"><Clock size={10} /> {post.readTime}</span>
+                        <span className="text-[12px] text-[#aaa] flex items-center gap-1 mt-1"><Clock size={10} /> {post.readTime}</span>
                       </div>
                     </Link>
                   </motion.div>
@@ -134,7 +134,7 @@ export default function BlogPage() {
                   <MessageCircle size={18} />
                   <div>
                     <p className="text-xs font-bold">Need a PDF Card?</p>
-                    <p className="text-[10px] text-white/70">Chat with us on WhatsApp</p>
+                    <p className="text-[12px] text-white/70">Chat with us on WhatsApp</p>
                   </div>
                 </a>
               </div>
@@ -150,13 +150,13 @@ export default function BlogPage() {
                     <div className="aspect-[16/9] bg-gradient-to-br from-[#0a2b4a] to-[#103558] overflow-hidden relative">
                       <img src={post.image} alt={post.title} onError={(e) => { const t = e.currentTarget; t.onerror = null; t.src = '/images/digital.jpg'; }} className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                       <div className="absolute top-3 left-3">
-                        <span className="px-2 py-0.5 bg-white/90 text-[#0a2b4a] rounded-full text-[9px] font-bold uppercase">{post.category}</span>
+                        <span className="px-2 py-0.5 bg-white/90 text-[#0a2b4a] rounded-full text-[11px] font-bold uppercase">{post.category}</span>
                       </div>
                     </div>
                     <div className="p-4 flex flex-col flex-1">
                       <h3 className="text-sm font-bold text-[#0a2b4a] group-hover:text-[#ff8309] transition-colors mb-2 line-clamp-2">{post.title}</h3>
                       <p className="text-xs text-[#888] line-clamp-2 mb-3 flex-1">{post.excerpt}</p>
-                      <div className="flex items-center justify-between text-[10px] text-[#aaa]">
+                      <div className="flex items-center justify-between text-[12px] text-[#aaa]">
                         <span className="flex items-center gap-1"><Clock size={10} /> {post.readTime}</span>
                         <span className="flex items-center gap-1 text-[#ff8309] font-medium">Read <ChevronRight size={10} /></span>
                       </div>

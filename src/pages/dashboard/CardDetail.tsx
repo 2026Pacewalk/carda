@@ -101,7 +101,7 @@ body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#0a2b4a,#082
         {card.servicesList && (card.servicesList as string[]).length > 0 && (
           <div className="flex flex-wrap gap-1.5 justify-center mb-4">
             {(card.servicesList as string[]).map((s: string, i: number) => (
-              <span key={i} className="bg-[#ff8309]/15 text-[#ff8309] px-2.5 py-0.5 rounded-full text-[10px] font-bold">{s}</span>
+              <span key={i} className="bg-[#ff8309]/15 text-[#ff8309] px-2.5 py-0.5 rounded-full text-[12px] font-bold">{s}</span>
             ))}
           </div>
         )}
@@ -169,7 +169,7 @@ body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#0a2b4a,#082
       {/* Details Table */}
       <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
         <h3 className="text-xs font-bold text-[#0a2b4a] mb-3">All Details</h3>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px]">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[13px]">
           {[
             ["Status", card.status],
             ["Downloads", String(card.downloadCount ?? 0)],

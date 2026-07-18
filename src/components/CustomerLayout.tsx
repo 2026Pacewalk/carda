@@ -56,10 +56,10 @@ export default function CustomerLayout({ children }: { children: React.ReactNode
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-white text-xs font-medium truncate">{customer?.name ?? "User"}</p>
-              <p className="text-white/40 text-[10px] truncate">{customer?.email ?? ""}</p>
+              <p className="text-white/40 text-[12px] truncate">{customer?.email ?? ""}</p>
             </div>
           </div>
-          <button onClick={logout} className="flex items-center gap-2 text-white/40 hover:text-white text-[11px] transition-colors">
+          <button onClick={logout} className="flex items-center gap-2 text-white/40 hover:text-white text-[13px] transition-colors">
             <LogOut size={14} /> Sign Out
           </button>
         </div>
@@ -83,7 +83,7 @@ export default function CustomerLayout({ children }: { children: React.ReactNode
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (
-              <Link key={item.path} to={item.path} className={`flex flex-col items-center gap-0.5 text-[10px] font-medium ${isActive ? "text-[#ff8309]" : "text-[#888]"}`}>
+              <Link key={item.path} to={item.path} className={`flex flex-col items-center gap-0.5 text-[12px] font-medium ${isActive ? "text-[#ff8309]" : "text-[#888]"}`}>
                 <Icon size={18} /> {item.label}
               </Link>
             );

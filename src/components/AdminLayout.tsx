@@ -50,7 +50,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </nav>
 
         <div className="p-4 border-t border-white/10">
-          <Link to="/" className="flex items-center gap-2 text-white/40 hover:text-white text-[11px] transition-colors mb-2">
+          <Link to="/" className="flex items-center gap-2 text-white/40 hover:text-white text-[13px] transition-colors mb-2">
             <LogOut size={14} /> Back to Website
           </Link>
         </div>
