@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import {
   Stethoscope, Home, Scissors, Scale, Calculator, UtensilsCrossed,
   Dumbbell, Shield, Briefcase, PartyPopper, MessageCircle,
-  Check, Zap, Share2, Smartphone, CreditCard
+  Check, Zap, Share2, Smartphone, CreditCard, ArrowRight
 } from 'lucide-react';
 
 const industries = [
@@ -96,21 +96,26 @@ export default function IndustriesPage() {
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {industries.map((ind, i) => (
-              <motion.a key={i} href={ind.link} initial={{ opacity: 0, y: 16 }} animate={inView1 ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:border-[#ff8309]/20 transition-all group block">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${ind.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
-                  <ind.icon className="text-white" size={22} />
-                </div>
-                <h3 className="text-[#0a2b4a] font-bold text-sm mb-1 group-hover:text-[#ff8309] transition-colors">{ind.title}</h3>
-                <p className="text-[#888] text-xs leading-relaxed mb-3">{ind.desc}</p>
-                <ul className="space-y-1">
-                  {ind.benefits.map((b, j) => (
-                    <li key={j} className="flex items-center gap-1.5 text-[12px] text-[#555]">
-                      <Check size={10} className="text-green-500 flex-shrink-0" /> {b}
-                    </li>
-                  ))}
-                </ul>
-              </motion.a>
+              <motion.div key={i} initial={{ opacity: 0, y: 16 }} animate={inView1 ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, delay: i * 0.05 }}>
+                <Link to={ind.link}
+                  className="h-full flex flex-col bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:border-[#ff8309]/20 transition-all group">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${ind.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
+                    <ind.icon className="text-white" size={22} />
+                  </div>
+                  <h3 className="text-[#0a2b4a] font-bold text-sm mb-1 group-hover:text-[#ff8309] transition-colors">{ind.title}</h3>
+                  <p className="text-[#888] text-xs leading-relaxed mb-3">{ind.desc}</p>
+                  <ul className="space-y-1 mb-3">
+                    {ind.benefits.map((b, j) => (
+                      <li key={j} className="flex items-center gap-1.5 text-[12px] text-[#555]">
+                        <Check size={10} className="text-green-500 flex-shrink-0" /> {b}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="inline-flex items-center gap-1 text-[#ff8309] text-xs font-bold mt-auto group-hover:gap-2 transition-all">
+                    Learn more <ArrowRight size={12} />
+                  </span>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -163,7 +168,7 @@ export default function IndustriesPage() {
       <section className="py-14 bg-gradient-to-br from-[#0a2b4a] to-[#08223b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-3">Do not See Your Industry?</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-3">Don't See Your Industry?</h2>
             <p className="text-white/60 text-sm mb-6 max-w-lg mx-auto">We create PDF cards for all professions. Contact us and we will design a card perfect for your business.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link to="/pricing" className="btn-orange">View Pricing</Link>
