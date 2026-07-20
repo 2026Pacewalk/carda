@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { getPostBySlug, blogPosts, getRecentPosts } from '../data/blogPosts';
 import type { BlogPost as BlogPostType } from '../data/blogPosts';
 import { Share2, Copy, Check, ChevronRight, Clock, Calendar, User, MessageCircle } from 'lucide-react';
+import Seo from '@/components/Seo';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -17,6 +18,7 @@ export default function BlogPostPage() {
   if (!post) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center">
+        <Seo noindex title="Blog Post Not Found" description="This blog post could not be found." path="/blog" />
         <h1 className="text-2xl font-bold text-[#0a2b4a] mb-2">Blog Post Not Found</h1>
         <Link to="/blog" className="text-[#ff8309] font-medium">Back to Blog</Link>
       </div>
@@ -41,6 +43,13 @@ export default function BlogPostPage() {
 
   return (
     <div>
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        path={`/blog/${post.slug}`}
+        type="article"
+        keywords={post.tags.join(", ")}
+      />
       {/* Breadcrumb */}
       <div className="bg-[#f8f7f7] border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3">

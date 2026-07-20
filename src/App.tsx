@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router';
 import { useAuth } from '@/hooks/useAuth';
 import { getAdminToken } from '@/hooks/useAdminAuth';
 import { Suspense, lazy } from 'react';
+import SeoManager from '@/components/SeoManager';
 
 // Layout
 import Layout from './components/Layout';
@@ -89,6 +90,8 @@ const pageWrap = (Component: React.ComponentType) => (
 
 export default function App() {
   return (
+    <>
+    <SeoManager />
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<PublicPage>{pageWrap(Home)}</PublicPage>} />
@@ -144,5 +147,6 @@ export default function App() {
 
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </>
   );
 }

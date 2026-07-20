@@ -149,7 +149,7 @@ export default function CustomerCreateCard() {
               <div className="bg-white rounded-[22px] overflow-hidden">
                 <div className="bg-gradient-to-br from-[#0a2b4a] to-[#103558] p-5 text-center">
                   {form.logoUrl ? (
-                    <img src={form.logoUrl} alt="" className="w-16 h-16 rounded-full mx-auto mb-2 object-cover bg-white/10" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                    <img src={form.logoUrl} alt="Business logo preview" className="w-16 h-16 rounded-full mx-auto mb-2 object-cover bg-white/10" onError={(e) => (e.currentTarget.style.display = 'none')} />
                   ) : (
                     <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-2 flex items-center justify-center text-white text-xl font-bold">
                       {form.businessName?.charAt(0) || "C"}

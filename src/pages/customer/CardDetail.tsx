@@ -35,7 +35,7 @@ export default function CustomerCardDetail() {
         <div className="bg-white rounded-[24px] overflow-hidden">
           <div className="bg-gradient-to-br from-[#0a2b4a] to-[#103558] p-5 text-center">
             {card.logoUrl ? (
-              <img src={card.logoUrl} alt="" className="w-16 h-16 rounded-full mx-auto mb-2 object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
+              <img src={card.logoUrl} alt="Business logo" className="w-16 h-16 rounded-full mx-auto mb-2 object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
             ) : (
               <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-2 flex items-center justify-center text-white text-2xl font-bold">{card.businessName?.charAt(0) || "C"}</div>
             )}
