@@ -101,23 +101,7 @@ export default function BlogPostPage() {
           <div className="grid lg:grid-cols-[1fr_280px] gap-8">
             <div>
               {/* Article */}
-              <article className="prose-blog">
-                <div className="text-sm text-[#555] leading-relaxed whitespace-pre-line mb-8">{post.content}</div>
-                {tocItems.length > 0 && (
-                  <div className="space-y-6">
-                    {tocItems.map((section, i: number) => (
-                      <div key={i} className="mb-6">
-                        <h2 id={`section-${i}`} className="text-xl font-bold text-[#0a2b4a] mb-3 scroll-mt-24">{section.title}</h2>
-                        {section.h3s?.map((h3: string, j: number) => (
-                          <div key={j} className="mt-4">
-                            <h3 className="text-base font-bold text-[#0a2b4a] mb-2">{h3}</h3>
-                          </div>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </article>
+              <article className="prose-blog" dangerouslySetInnerHTML={{ __html: post.content }} />
 
               {/* Author */}
               <div className="mt-10 flex items-center gap-4 bg-[#f8f7f7] rounded-xl p-5">
@@ -250,13 +234,25 @@ export default function BlogPostPage() {
         "@type": "BlogPosting",
         "headline": post.title,
         "description": post.excerpt,
-        "image": `https://mycarda.com${post.image}`,
+        "image": "https://mycarda.com/images/og-image.jpg",
         "datePublished": post.date,
         "dateModified": post.date,
         "author": { "@type": "Organization", "name": post.author },
         "publisher": { "@type": "Organization", "name": "MyCarda", "logo": { "@type": "ImageObject", "url": "https://mycarda.com/images/logo.png" } },
         "mainEntityOfPage": { "@type": "WebPage", "@id": `https://mycarda.com/blog/${post.slug}` },
       })}} />
+
+      {(post.faqs || []).length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": (post.faqs || []).map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+          })),
+        })}} />
+      )}
     </div>
   );
 }
