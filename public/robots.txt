@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Private / app areas — do not crawl
+Disallow: /admin
+Disallow: /customer
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+Disallow: /api/
+
+Sitemap: https://mycarda.com/sitemap.xml
