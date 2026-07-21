@@ -155,7 +155,7 @@ export default function App() {
       <Route path="/admin/orders" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminOrders)}</AdminLayout></AdminProtectedRoute>} />
       <Route path="/admin/payments" element={<AdminProtectedRoute><AdminLayout>{pageWrap(AdminPayments)}</AdminLayout></AdminProtectedRoute>} />
 
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<PublicPage><NotFound /></PublicPage>} />
     </Routes>
     </>
   );

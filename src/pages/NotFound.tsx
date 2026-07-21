@@ -12,20 +12,13 @@ const popular = [
 
 export default function NotFound() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0a2b4a] via-[#0a2b4a] to-[#061a2e] flex flex-col">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#0a2b4a] via-[#0a2b4a] to-[#061a2e]">
       {/* Decorative glows */}
       <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#ff8309]/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-[#ff8309]/5 blur-3xl" />
 
-      {/* Logo */}
-      <header className="relative z-10 p-5 sm:p-6">
-        <Link to="/" className="inline-flex active:scale-95 transition-transform">
-          <img src="/images/logo.png" alt="MyCarda" className="h-10 w-auto" />
-        </Link>
-      </header>
-
       {/* Content */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 pb-16">
+      <div className="relative z-10 min-h-[70vh] flex flex-col items-center justify-center text-center px-4 py-16 md:py-20">
         {/* Big 404 with a floating card as the "0" */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -78,7 +71,7 @@ export default function NotFound() {
             </div>
           </div>
         </motion.div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }
