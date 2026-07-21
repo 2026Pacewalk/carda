@@ -4,6 +4,7 @@ import { getAdminToken } from '@/hooks/useAdminAuth';
 import { Suspense, lazy } from 'react';
 import SeoManager from '@/components/SeoManager';
 import { industries } from '@/data/industries';
+import { locations } from '@/data/locations';
 
 // Layout
 import Layout from './components/Layout';
@@ -24,6 +25,7 @@ const SamplesPage = lazy(() => import('./pages/SamplesPage'));
 const HowItWorksPage = lazy(() => import('./pages/HowItWorksPage'));
 const IndustriesPage = lazy(() => import('./pages/IndustriesPage'));
 const IndustryDetail = lazy(() => import('./pages/IndustryDetail'));
+const LocationDetail = lazy(() => import('./pages/LocationDetail'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
@@ -105,6 +107,9 @@ export default function App() {
       <Route path="/industries" element={<PublicPage>{pageWrap(IndustriesPage)}</PublicPage>} />
       {industries.map((ind) => (
         <Route key={ind.slug} path={`/${ind.slug}`} element={<PublicPage>{pageWrap(IndustryDetail)}</PublicPage>} />
+      ))}
+      {locations.map((loc) => (
+        <Route key={loc.slug} path={`/${loc.slug}`} element={<PublicPage>{pageWrap(LocationDetail)}</PublicPage>} />
       ))}
       <Route path="/contact-us" element={<PublicPage>{pageWrap(ContactUs)}</PublicPage>} />
       <Route path="/blog" element={<PublicPage>{pageWrap(BlogPage)}</PublicPage>} />

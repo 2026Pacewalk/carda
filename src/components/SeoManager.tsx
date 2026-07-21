@@ -1,6 +1,7 @@
 import { useLocation } from "react-router";
 import Seo from "./Seo";
 import { industrySlugs } from "@/data/industries";
+import { locationSlugs } from "@/data/locations";
 
 type Meta = { title: string; description: string; keywords?: string };
 
@@ -107,6 +108,7 @@ export default function SeoManager() {
   // Blog posts and industry pages render their own <Seo>.
   if (pathname.startsWith("/blog/")) return null;
   if (industrySlugs.has(pathname)) return null;
+  if (locationSlugs.has(pathname)) return null;
 
   // Authenticated app areas — never index.
   if (NOINDEX_PREFIXES.some((p) => pathname.startsWith(p))) {

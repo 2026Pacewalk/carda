@@ -289,16 +289,18 @@ export default function HomePage() {
           </motion.div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {locations.map((loc, i) => (
-              <motion.a key={i} href={loc.path} initial={{ opacity: 0, y: 12 }} animate={locInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.35, delay: i * 0.04 }}
-                className="bg-[#f8f7f7] rounded-xl p-4 border border-gray-100 hover:shadow-md hover:border-[#ff8309]/20 transition-all group flex items-center gap-3">
-                <div className="w-9 h-9 bg-gradient-to-br from-[#0a2b4a] to-[#103558] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:from-[#ff8309] group-hover:to-[#e57400] transition-all">
-                  <MapPin size={14} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-[#0a2b4a] font-bold text-xs group-hover:text-[#ff8309] transition-colors">{loc.name}</h3>
-                  <span className="text-[#999] text-[12px]">PDF Business Card</span>
-                </div>
-              </motion.a>
+              <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={locInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.35, delay: i * 0.04 }}>
+                <Link to={loc.path}
+                  className="bg-[#f8f7f7] rounded-xl p-4 border border-gray-100 hover:shadow-md hover:border-[#ff8309]/20 transition-all group flex items-center gap-3">
+                  <div className="w-9 h-9 bg-gradient-to-br from-[#0a2b4a] to-[#103558] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:from-[#ff8309] group-hover:to-[#e57400] transition-all">
+                    <MapPin size={14} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-[#0a2b4a] font-bold text-xs group-hover:text-[#ff8309] transition-colors">{loc.name}</h3>
+                    <span className="text-[#999] text-[12px]">PDF Business Card</span>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
