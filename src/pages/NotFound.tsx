@@ -48,7 +48,7 @@ export default function NotFound() {
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#ff8309] text-[11px] font-bold uppercase tracking-widest mb-4">
             <Compass size={13} /> Error 404
           </span>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-white mb-3">Oops! This Page Took a Wrong Turn</h1>
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-white mb-3">Looks Like This Card Got Lost</h1>
           <p className="text-white/55 text-sm sm:text-base max-w-md mx-auto mb-8 leading-relaxed">
             The page you're looking for doesn't exist or has moved. But your perfect interactive PDF business card is just a tap away.
           </p>
