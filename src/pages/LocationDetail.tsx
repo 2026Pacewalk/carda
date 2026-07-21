@@ -40,7 +40,9 @@ export default function LocationDetail() {
     );
   }
 
-  const related = locations.filter((l) => l.slug !== loc.slug).slice(0, 3);
+  // Rotate through the list so every city links to (and is linked from) others — no orphans.
+  const idx = locations.findIndex((l) => l.slug === loc.slug);
+  const related = [...locations.slice(idx + 1), ...locations.slice(0, idx)].slice(0, 3);
 
   return (
     <div>

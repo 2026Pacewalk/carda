@@ -30,7 +30,8 @@ export default function IndustryDetail() {
   }
 
   const Icon = ind.icon;
-  const related = industries.filter((i) => i.slug !== ind.slug).slice(0, 3);
+  const idx = industries.findIndex((i) => i.slug === ind.slug);
+  const related = [...industries.slice(idx + 1), ...industries.slice(0, idx)].slice(0, 3);
 
   return (
     <div>
